@@ -1,0 +1,21 @@
+<section class="about" id="about">
+  <h2 class="heading">Om <span>Mig</span></h2>
+
+  <div class="about-cards">
+    <div
+      class="card"
+      *ngFor="let card of cardData; let i = index"
+      [class.active]="selectedCard === card"
+      (click)="selectCard(i)"
+    >
+      <div class="card-image">
+        <img [src]="card.image" [alt]="card.cardTitle" />
+        <div class="card-text">{{ card.cardTitle }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="about-information">
+    <p [class.fade-in]="fadeInClass" class="fade-text">{{ selectedCard.cardText }}</p>
+  </div>
+</section>

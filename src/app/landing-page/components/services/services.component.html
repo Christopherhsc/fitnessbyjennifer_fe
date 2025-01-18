@@ -1,0 +1,46 @@
+<section class="services" id="services">
+  <div class="explainer">
+    <div class="services-img">
+      <img src="/about-image.jpg" alt="About Image" />
+    </div>
+
+    <div class="services-content">
+      <h2 class="heading">Hvorfor <span>Mig?</span></h2>
+      <p>
+        Jeg er uddannet Personlig Træner og Kostvejleder og har mange års
+        erfaring inde for feltet.
+      </p>
+      <p>
+        Jeg har en dybdegående forståelse for kroppens anatomi og forstår
+        derfor, at sundhed og træning er individuelt.
+      </p>
+      <p>
+        Som følge deraf vil der hos mig, altid foregå en uforpligtende
+        indledende samtale inden dit forløb.
+      </p>
+      <p>
+        Mit fokus er dine mål, udfordringer og forventninger til dit forløb. Det
+        er essentielt for mig, at jeg forstår hvem du er som person samt kender
+        din hverdag og personlige behov, så jeg på den måde kan sammensætte et
+        forløb unikt til dig.
+      </p>
+      <a href="#kontakt" class="btn">Uforpligtende Samtale</a>
+    </div>
+  </div>
+
+  <div class="plans">
+    <h2 class="heading">Mine <span>Ydelser</span></h2>
+
+    <div class="plans-content">
+      <div class="card" *ngFor="let plan of plansData; let i = index" (click)="toggleVisibility(i)">
+        <h3>{{ plan.planTitle }}</h3>
+        <h4>{{ plan.planText }}</h4>
+
+        <!-- Bullet points list -->
+        <ul *ngIf="isVisible[i]">
+          <li *ngFor="let point of plan.dotPoints">{{ point }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
