@@ -1,0 +1,36 @@
+#contact {
+  background: var(--snd-bg-color);
+
+  .contact-explainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    margin: 4rem auto;
+
+    .paragraph-container {
+      border-left: 1px solid var(--main-color);
+      padding-left: 1rem;
+      margin-top: 4rem;
+
+      h2 {
+        text-align: center;
+        font-size: var(--m-text);
+      }
+
+      p {
+        text-align: left;
+        font-size: var(--s-text);
+        margin-top: 1rem;
+
+        &:first-child {
+          margin-top: 0rem;
+        }
+      }
+    }
+  }
+  .email-btn{
+    display: flex;
+    justify-content: center;
+  }
+}

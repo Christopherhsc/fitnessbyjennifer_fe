@@ -14,7 +14,7 @@ export class ServicesComponent {
   plansData = plansInformation;
   isVisible: boolean[] = [];
 
-  toggleVisibility(index: number): void {
+  toggleVisibility(index: number) {
     this.isVisible[index] = !this.isVisible[index];
   }
 }

@@ -17,6 +17,11 @@
   --snd-bg-color: #111;
   --text-color: #fff;
   --main-color: #45ffca;
+
+  --xl-text: 60px;
+  --l-text: 50px;
+  --m-text: 36px;
+  --s-text: 24px;
 }
 
 html {
@@ -35,7 +40,7 @@ section {
 
 .heading {
   text-align: center;
-  font-size: 3.5rem;
+  font-size: var(--xl-text);
   color: var(--text-color);
 
   span {
@@ -49,7 +54,7 @@ section {
   background: var(--main-color);
   border-radius: 0.7rem;
   box-shadow: none;
-  font-size: 1.6rem;
+  font-size: var(--m-text);
   color: var(--bg-color);
   letter-spacing: 0.1rem;
   font-weight: 600;
@@ -59,4 +64,12 @@ section {
     color: var(--text-color);
     box-shadow: 0 0 1.6rem var(--main-color);
   }
+}
+
+@media (max-width: 1200px) {
+  
+}
+
+@media (max-width: 991px) {
+  
 }

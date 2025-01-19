@@ -4,12 +4,12 @@
   <div class='bx bx-menu' id="menu-icon"></div>
   
   <ul class="navbar">
-    <li><a href="#home">Hjem</a></li>
-    <li><a href="#about">Om mig</a></li>
-    <li><a href="#services">Ydelser</a></li>
-    <li><a href="#reviews">Anmeldelser</a></li>
-    <li><a href="#contact">Kontakt</a></li>
-    <li><a href="#auth">Log ind</a></li>
+    <li><a href="#home" [ngClass]="{ active: activeLink === 'home' }" (click)="setActive('home')">Hjem</a></li>
+    <li><a href="#about" [ngClass]="{ active: activeLink === 'about' }" (click)="setActive('about')">Om mig</a></li>
+    <li><a href="#services" [ngClass]="{ active: activeLink === 'services' }" (click)="setActive('services')">Ydelser</a></li>
+    <li><a href="#review" [ngClass]="{ active: activeLink === 'review' }" (click)="setActive('review')">Anmeldelser</a></li>
+    <li><a href="#contact" [ngClass]="{ active: activeLink === 'contact' }" (click)="setActive('contact')">Kontakt</a></li>
+    <li><a href="#auth" [ngClass]="{ active: activeLink === 'auth' }" (click)="setActive('auth')">Log ind</a></li>
   </ul>
 
 

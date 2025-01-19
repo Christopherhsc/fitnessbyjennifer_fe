@@ -26,64 +26,67 @@
     .services-content {
       padding: 0 3rem;
 
-      .heading {
-        font-size: 3.5rem;
-      }
-
       h2 {
         text-align: left;
         line-height: 1.2;
       }
 
       p {
-        font-size: 1.2rem;
+        font-size: var(--s-text);
         margin: 2rem 0 2rem;
       }
     }
   }
   .plans {
     background: var(--snd-bg-color);
-    margin-top: 1rem;
+    margin-top: 12rem;
     border-radius: 1rem;
 
     .plans-content {
-      display: grid;
+      display: flex;
       margin-top: 1rem;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      align-items: stretch;
+      display: flex;
+      flex-wrap: wrap;
       gap: 2.3rem;
       padding: 15px;
 
       .card {
         padding: 30px 30px 5px 30px;
-        min-height: 20rem;
+        flex: 1 1 auto;
+        min-height: 5.5rem;
         background: var(--bg-color);
         border-radius: 28px;
         border: 1px solid transparent;
         box-shadow: 0 0 5px var(--main-color);
+        box-sizing: border-box;
         transition: all 0.5s ease;
         cursor: pointer;
         h3 {
-          font-size: 25px;
+          font-size: var(--m-text);
           font-weight: 600;
-          margin-bottom: 10px;
+          margin-bottom: 25px;
           color: var(--main-color);
+          text-align: center;
         }
         h4 {
           color: var(--text-color);
           line-height: 1.7;
           padding-bottom: 0.8rem;
+          font-size: var(--s-text)
         }
         ul li {
           list-style: disc;
-          font-size: 16px;
+          font-size: var(--s-text);
           padding-bottom: 0.8rem;
           font-weight: 600;
         }
 
         &:hover {
           border: 1px solid var(--main-color);
-          transform: translateY(-5px) scale(1.03);
+          transform: translateY(-5px) scale(1.01);
+        }
+        &.expanded {
+          background: var(--card-expanded-bg); 
         }
       }
     }
