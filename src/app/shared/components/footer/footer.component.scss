@@ -39,3 +39,9 @@ footer {
     color: var(--text-color);
   }
 }
+
+@media (max-width: 991px) {
+  .footer{
+    padding: 40px 0;
+  }
+}

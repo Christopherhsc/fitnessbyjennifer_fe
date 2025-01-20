@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { cardsInformation } from './aboutDataComponent';
+
 
 @Component({
   selector: 'app-about',
@@ -9,10 +10,24 @@ import { cardsInformation } from './aboutDataComponent';
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.scss'],
 })
-export class AboutComponent {
+export class AboutComponent implements OnInit {
   cardData = cardsInformation;
   selectedCard = this.cardData[0];
   fadeInClass = true;
+  isBelow1400px = false;
+
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.checkViewportWidth();
+  }
+
+  ngOnInit() {
+    this.checkViewportWidth();
+  }
+
+  checkViewportWidth() {
+    this.isBelow1400px = window.innerWidth < 1400;
+  }
 
   // Method to handle card selection
   selectCard(index: number) {

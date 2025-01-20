@@ -4,7 +4,6 @@
 
     <div class="wrapper">
       <div class="review-item" *ngFor="let review of reviews">
-        <img [src]="review.image" [alt]="review.name" class="review-image" />
         <h2>{{ review.name }}</h2>
         <div class="rating">
           <i id="star"

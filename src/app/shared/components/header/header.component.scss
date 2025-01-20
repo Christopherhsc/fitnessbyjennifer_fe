@@ -72,3 +72,36 @@ header {
     display: none;
   }
 }
+
+
+
+@media (max-width: 991px) {
+  header {
+    padding: 2rem 3%;
+
+    #menu-icon {
+      display: block;
+    }
+    .navbar {
+      position: absolute;
+      top: 100%;
+      right: -100%;
+      width: 225px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-color: var(--bg-color);
+      transition: all 0.5s ease;
+
+      a {
+        display: block;
+        padding: 17px;
+        font-size: 22px;
+      }
+
+      &:active {
+        right: 0;
+      }
+    }
+  }
+}

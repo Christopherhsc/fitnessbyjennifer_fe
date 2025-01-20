@@ -10,12 +10,19 @@
     >
       <div class="card-image">
         <img [src]="card.image" [alt]="card.cardTitle" />
-        <div class="card-text">{{ card.cardTitle }}</div>
+        <div class="card-text">
+          <ng-container *ngIf="isBelow1400px; else titleTemplate">
+            {{ card.cardText }}
+          </ng-container>
+          <ng-template #titleTemplate>
+            {{ card.cardTitle }}
+          </ng-template>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="about-information">
+  <div *ngIf="!isBelow1400px" class="about-information">
     <p [class.fade-in]="fadeInClass" class="fade-text">{{ selectedCard.cardText }}</p>
   </div>
 </section>

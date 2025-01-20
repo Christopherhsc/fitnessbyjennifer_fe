@@ -42,14 +42,27 @@
         content: "FITNESS";
         position: absolute;
         top: 10%;
-        left: 50%;
+        left: 30%;
         transform: translateX(-50%);
-        font-size: 20rem;
+        font-size: var(--2xl-text);
         font-weight: 400;
         line-height: 20rem;
         color: var(--text-color);
         opacity: 0.5;
-        z-index: -1;
+      }
+    }
+  }
+}
+
+@media (max-width: 786px) {
+  .home{
+    flex-direction: column;
+
+    .home-content{
+      order: 2;
+      
+      .home-img img {
+        width: 100%;
       }
     }
   }

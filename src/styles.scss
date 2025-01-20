@@ -18,19 +18,20 @@
   --text-color: #fff;
   --main-color: #45ffca;
 
+  --2xl-text: 180px;
   --xl-text: 60px;
   --l-text: 50px;
   --m-text: 36px;
   --s-text: 24px;
+  --xs-text: 18px;
 }
 
-html {
-  overflow-x: hidden;
-}
-
+html,
 body {
+  overflow-x: hidden;
   background: var(--bg-color);
   color: var(--text-color);
+  width: 100%;
 }
 
 section {
@@ -66,13 +67,44 @@ section {
   }
 }
 
-@media (max-width: 1200px) {
-  html {
-    font-size: 55%;
+@media (max-width: 1400px) {
+  :root {
+    --2xl-text: 140px;
+    --xl-text: 50px;
+    --l-text: 40px;
+    --m-text: 28px;
+    --s-text: 18px;
   }
-  
 }
 
 @media (max-width: 991px) {
-  
+  :root {
+    --2xl-text: 90px;
+    --xl-text: 40px;
+    --l-text: 30px;
+    --m-text: 21px;
+    --s-text: 14px;
+  }
+  section {
+    padding: 10rem 3%;
+  }
+}
+
+@media (max-width: 600px) {
+  :root {
+    --2xl-text: 60px;
+  }
+}
+
+@media (max-width: 400px) {
+  :root {
+    --2xl-text: 40px;
+    --xl-text: 28px;
+    --l-text: 18px;
+    --m-text: 12px;
+    --s-text: 10px;
+  }
+  section {
+    padding: 10rem 3%;
+  }
 }
