@@ -1,12 +1,14 @@
 #contact {
   background: var(--snd-bg-color);
+  display: flex;
+  flex-direction: column;
 
   .contact-explainer {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 50%;
-    margin: 4rem auto;
+    margin: auto;
 
     .paragraph-container {
       border-left: 1px solid var(--main-color);
@@ -14,13 +16,14 @@
       margin-top: 4rem;
 
       h2 {
-        text-align: center;
         font-size: var(--m-text);
       }
 
       p {
         text-align: left;
         font-size: var(--s-text);
+        color: var(--text-color);
+
         margin-top: 1rem;
 
         &:first-child {
@@ -28,9 +31,15 @@
         }
       }
     }
+
+    p {
+      margin-top: 1rem;
+      color: var(--main-color);
+    }
   }
-  .email-btn{
+  .email-btn {
     display: flex;
     justify-content: center;
+    margin-top: 4rem;
   }
 }
