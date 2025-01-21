@@ -13,33 +13,5 @@ export const customerReviews = [
         'Jeg var på udkig efter en personlig træner, som var i stand til at forstå mine behov og mål...',
       rating: 5,
     },
-    {
-      name: 'Maria',
-      image: 'https://randomuser.me/api/portraits/women/7.jpg',
-      reviewText:
-        'Jeg var på udkig efter en personlig træner, som var i stand til at forstå mine behov og mål...',
-      rating: 5,
-    },
-    {
-      name: 'Maria',
-      image: 'https://randomuser.me/api/portraits/women/9.jpg',
-      reviewText:
-        'Jeg var på udkig efter en personlig træner, som var i stand til at forstå mine behov og mål...',
-      rating: 5,
-    },
-    {
-      name: 'Maria',
-      image: 'https://randomuser.me/api/portraits/women/16.jpg',
-      reviewText:
-        'Jeg var på udkig efter en personlig træner, som var i stand til at forstå mine behov og mål...',
-      rating: 5,
-    },
-    {
-      name: 'Maria',
-      image: 'https://randomuser.me/api/portraits/women/12.jpg',
-      reviewText:
-        'Jeg var på udkig efter en personlig træner, som var i stand til at forstå mine behov og mål...',
-      rating: 5,
-    },
   ];
   

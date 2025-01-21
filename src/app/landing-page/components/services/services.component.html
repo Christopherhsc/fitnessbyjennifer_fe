@@ -32,8 +32,8 @@
     <h2 class="heading">Mine <span>Ydelser</span></h2>
 
     <div class="plans-content">
-      <div
-        class="card"
+      <a
+        class="btn"
         *ngFor="let plan of plansData; let i = index"
         [ngClass]="{ expanded: isVisible[i] }"
         (click)="toggleVisibility(i)"
@@ -45,7 +45,7 @@
         <ul *ngIf="isVisible[i]">
           <li *ngFor="let point of plan.dotPoints">{{ point }}</li>
         </ul>
-      </div>
+      </a>
     </div>
   </div>
 </section>

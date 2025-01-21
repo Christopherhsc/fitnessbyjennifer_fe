@@ -6,6 +6,7 @@
     position: relative;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     align-items: center;
+    justify-content: center;
 
     gap: 2.3rem;
     margin-top: 4.1rem;
@@ -25,6 +26,8 @@
         height: auto;
         display: block;
 
+        height: 650px;
+        object-fit: cover;
         width: 100%;
         border-radius: 27px;
       }
@@ -40,6 +43,7 @@
         font-weight: 700;
         text-align: center;
         width: 100%;
+        font-size: 15px;
       }
 
       &:hover {
@@ -82,9 +86,15 @@
 @media (max-width: 1400px) {
   .about {
     .about-cards {
-      grid-template-columns: repeat(2, 1fr);
-
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
       .card {
+        width: 90%;
+        img {
+          height: 600px;
+        }
+
         .card-text {
           padding: 2rem;
         }
@@ -96,7 +106,9 @@
 @media (max-width: 1100px) {
   .about {
     .about-cards {
-      grid-template-columns: repeat(1, 1fr);
+      flex-direction: column;
+      width: 70%;
+      margin: 4.1rem auto;
     }
   }
 }
@@ -109,7 +121,15 @@
       grid-template-columns: repeat(1, 1fr);
       gap: 2rem;
 
-      .card img {
+      .card {
+        img {
+          height: 400px;
+        }
+
+        .card-text {
+          font-size: var(--xs-text);
+          padding: 1.4rem
+        }
       }
     }
   }
