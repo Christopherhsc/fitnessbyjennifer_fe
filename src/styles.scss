@@ -19,11 +19,11 @@
   --main-color: #45ffca;
 
   --2xl-text: 180px;
-  --xl-text: 60px;
-  --l-text: 50px;
-  --m-text: 36px;
-  --s-text: 22px;
-  --xs-text: 18px;
+  --xl-text: 50px;
+  --l-text: 35px;
+  --m-text: 30px;
+  --s-text: 18px;
+  --xs-text: 16px;
 }
 
 html,
@@ -41,7 +41,7 @@ section {
 
 .heading {
   text-align: center;
-  font-size: var(--xl-text);
+  font-size: var(--l-text);
   color: var(--text-color);
 
   span {
@@ -51,11 +51,11 @@ section {
 
 .btn {
   display: inline-block;
-  padding: 1rem 2.8rem;
+  padding: 1rem 2rem;
   background: var(--main-color);
   border-radius: 0.7rem;
   box-shadow: none;
-  font-size: var(--m-text);
+  font-size: var(--s-text);
   color: var(--bg-color);
   letter-spacing: 0.1rem;
   font-weight: 600;
@@ -68,8 +68,20 @@ section {
   }
 }
 
+::-webkit-scrollbar {
+  background-color: var(--snd-bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--main-color); 
+
+  &:hover {
+    background-color: var(--text-color);
+  }
+}
+
 @media (max-width: 1500px) {
-  .btn{
+  .btn {
     padding: 0.8rem 1rem;
     font-size: var(--s-text);
   }
@@ -84,11 +96,10 @@ section {
     --s-text: 18px;
     --xs-text: 14px;
   }
-
 }
 
 @media (max-width: 1100px) {
-  .btn{
+  .btn {
     padding: 0.6rem 0.8rem;
     font-size: var(--s-text);
   }
