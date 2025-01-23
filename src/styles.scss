@@ -18,12 +18,12 @@
   --text-color: #fff;
   --main-color: #45ffca;
 
-  --2xl-text: 180px;
-  --xl-text: 50px;
-  --l-text: 35px;
-  --m-text: 30px;
-  --s-text: 18px;
-  --xs-text: 16px;
+  --3xl-text: 11.25rem;
+  --xl-text: 3.125rem;
+  --l-text: 2.1875rem;
+  --m-text: 1.875rem;
+  --s-text: 1.125rem;
+  --xs-text: 1rem;
 }
 
 html,
@@ -73,7 +73,7 @@ section {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: var(--main-color); 
+  background-color: var(--main-color);
 
   &:hover {
     background-color: var(--text-color);
@@ -89,12 +89,12 @@ section {
 
 @media (max-width: 1400px) {
   :root {
-    --2xl-text: 140px;
-    --xl-text: 50px;
-    --l-text: 40px;
-    --m-text: 28px;
-    --s-text: 18px;
-    --xs-text: 14px;
+    --3xl-text: 8.75rem;
+    --xl-text: 3.125rem;
+    --l-text: 2.5rem;
+    --m-text: 1.75rem;
+    --s-text: 1.125rem;
+    --xs-text: 0.875rem;
   }
 }
 
@@ -107,11 +107,12 @@ section {
 
 @media (max-width: 991px) {
   :root {
-    --2xl-text: 90px;
-    --xl-text: 40px;
-    --l-text: 30px;
-    --m-text: 21px;
-    --s-text: 14px;
+    --3xl-text: 5.625rem;
+    --2xl-text: 4rem;
+    --xl-text: 2.5rem;
+    --l-text: 1.875rem;
+    --m-text: 1.3125rem;
+    --s-text: 0.875rem;
   }
   section {
     padding: 10rem 3%;
@@ -120,14 +121,14 @@ section {
 
 @media (max-width: 600px) {
   :root {
-    --2xl-text: 60px;
+    --3xl-text: 60px;
     --xs-text: 10px;
   }
 }
 
 @media (max-width: 400px) {
   :root {
-    --2xl-text: 40px;
+    --3xl-text: 40px;
     --xl-text: 28px;
     --l-text: 18px;
     --m-text: 12px;

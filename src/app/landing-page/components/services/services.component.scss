@@ -53,6 +53,8 @@
       .btn {
         flex: 1 1 auto;
         max-width: 50%;
+        position: relative;
+        overflow: hidden;
 
         h3 {
           text-align: center;
@@ -63,11 +65,13 @@
           padding-bottom: 0.8rem;
           font-size: var(--s-text);
         }
-        ul li {
-          list-style: disc;
-          font-size: var(--s-text);
-          padding-bottom: 0.8rem;
-          font-weight: 600;
+        ul {
+          li {
+            list-style: disc;
+            font-size: var(--s-text);
+            padding-bottom: 0.8rem;
+            font-weight: 600;
+          }
         }
 
         &:hover {
@@ -75,7 +79,7 @@
           transform: translateY(-5px) scale(1.01);
         }
         &.expanded {
-          background: var(--card-expanded-bg);
+          color: var(--snd-bg-color);
         }
       }
     }

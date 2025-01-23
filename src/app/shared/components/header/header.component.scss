@@ -14,11 +14,12 @@ header {
   transition: all 0.5s ease;
 
   .logo {
-    font-size: var(--l-text);
+    font-size: var(--xl-text);
     color: var(--text-color);
     font-weight: 800;
     cursor: pointer;
     transition: 0.3s ease-in-out;
+    z-index: 100;
 
     &:hover {
       transform: scale(1.1);
@@ -32,76 +33,141 @@ header {
   .navbar {
     display: flex;
     align-items: center;
-    margin-top: 1%;
+    margin-top: 1rem;
 
-    a {
-      font-size: var(--s-text);
-      font-weight: 500;
-      color: var(--text-color);
-      margin-left: 1.6rem;
-      transition: all 0.5s ease;
-      border-bottom: 3px solid transparent;
+    li {
+      margin-left: 2.2rem;
 
-      &:hover,
-      &.active {
-        color: var(--main-color);
-        border-bottom: 2px solid var(--main-color);
-      }
-    }
-    li:last-child a {
-      display: inline-block;
-      color: var(--main-color);
-      background: transparent;
-      padding: 0.4rem 1.5rem;
-      border: 2px solid var(--main-color);
-      border-radius: 0.7rem;
-      font-weight: 600;
-      transition: all 0.5s ease;
-
-      &:hover {
-        background: var(--main-color);
+      a {
+        font-size: var(--m-text);
+        font-weight: 500;
         color: var(--text-color);
-        box-shadow: 0 0 18px var(--main-color);
+        transition: all 0.5s ease;
+        border-bottom: 3px solid transparent;
+
+        &:hover,
+        &.active {
+          color: var(--main-color);
+          border-bottom: 2px solid var(--main-color);
+        }
+      }
+
+      &:last-child a {
+        display: inline-block;
+        color: var(--main-color);
+        background: transparent;
+        padding: 0.4rem 1.5rem;
+        border: 2px solid var(--main-color);
+        border-radius: 0.7rem;
+        font-weight: 600;
+        transition: all 0.5s ease;
+
+        &:hover {
+          background: var(--main-color);
+          color: var(--text-color);
+          box-shadow: 0 0 18px var(--main-color);
+        }
       }
     }
   }
+
+  @media (max-width: 1600px) {
+    .navbar {
+      margin-top: 0;
+
+      li {
+        a {
+          font-size: var(--m-text);
+        }
+      }
+    }
+
+    .logo {
+      font-size: var(--l-text);
+    }
+  }
+  @media (max-width: 1400px) {
+    .navbar {
+      margin-top: 1rem;
+
+      li {
+        a {
+          font-size: var(--s-text);
+        }
+      }
+    }
+  }
+
+  @media (max-width: 1200px) {
+    .navbar {
+      margin-top: 0.5rem;
+
+      li {
+        a {
+          font-size: var(--s-text);
+        }
+      }
+    }
+
+    .logo {
+      font-size: var(--m-text);
+    }
+  }
+
+  @media (max-width: 1050px) {
+    .navbar{
+      li{
+        margin-left: 1.5rem;
+      }
+    }
+  }
+
   #menu-icon {
-    font-size: var(--l-text);
+    font-size: var(--2xl-text);
     color: var(--main-color);
     cursor: pointer;
     display: none;
+    z-index: 100;
   }
-}
 
+  @media (max-width: 991px) {
+    .navbar {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100vw;
+      height: 100vh;
+      right: -100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-end;
+      padding: 2rem;
+      transition: all 0.5s ease;
 
+      &.active {
+        right: 0;
+      }
 
-@media (max-width: 991px) {
-  header {
-    padding: 2rem 3%;
+      li {
+        margin: 1rem 0;
+
+        a {
+          display: block;
+          padding: 0.5rem 5rem;
+          font-size: var(--2xl-text);
+        }
+      }
+
+      li:last-child {
+        align-self: center;
+        margin-top: 2rem;
+      }
+    }
 
     #menu-icon {
       display: block;
-    }
-    .navbar {
-      position: absolute;
-      top: 100%;
-      right: -100%;
-      width: 225px;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      background-color: var(--bg-color);
-      transition: all 0.5s ease;
-
-      a {
-        display: block;
-        padding: 17px;
-        font-size: 22px;
-      }
-
-      &:active {
-        right: 0;
-      }
     }
   }
 }
