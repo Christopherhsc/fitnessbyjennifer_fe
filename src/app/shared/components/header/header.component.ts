@@ -1,33 +1,45 @@
-import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
+  imports: [CommonModule, RouterLink],
   selector: 'app-header',
-  imports: [CommonModule],
-  standalone: true,
   templateUrl: './header.component.html',
-  styleUrl: './header.component.scss',
+  styleUrls: ['./header.component.scss'],
+  standalone: true,
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit, OnDestroy {
   activeLink: string = '';
   isMenuOpen: boolean = false;
+  hideNavbar: boolean = false;
+  private routeSub: Subscription = new Subscription();
 
-  // set toggled link active with styling
+  constructor(public router: Router) {}
+
+  ngOnInit(): void {
+    // Listen to route changes
+    this.routeSub = this.router.events.subscribe(() => {
+      this.hideNavbar = this.router.url === '/login';
+    });
+  }
+
+  ngOnDestroy(): void {
+    // Clean up the subscription
+    this.routeSub.unsubscribe();
+  }
+
   setActive(link: string): void {
+    this.isMenuOpen = false;
     this.activeLink = link;
-
-    // Close the menu after 2 seconds on mobile
-    if (this.isMenuOpen) {
-      setTimeout(() => {
-        this.isMenuOpen = false;
-        console.log('Menu closed after clicking:', link);
-      }, 1200);
+    const targetElement = document.getElementById(link);
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: 'smooth' });
     }
   }
 
-
   toggleMenu(): void {
     this.isMenuOpen = !this.isMenuOpen;
-    console.log("is menu open?", this.isMenuOpen)
   }
 }

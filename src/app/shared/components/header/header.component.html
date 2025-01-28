@@ -1,14 +1,58 @@
 <header>
-  <a href="#home" class="logo">Jennifer <span>Rasmussen</span></a>
+  <a
+    class="logo"
+    [ngClass]="{ active: activeLink === 'home' }"
+    [routerLink]="['/']"
+    >Jennifer <span>Rasmussen</span></a
+  >
 
   <div class="bx bx-menu" id="menu-icon" (click)="toggleMenu()"></div>
 
-  <ul class="navbar" [ngClass]="{ 'active': isMenuOpen }">
-    <li><a href="#home" [ngClass]="{ active: activeLink === 'home' }" (click)="setActive('home')">Hjem</a></li>
-    <li><a href="#about" [ngClass]="{ active: activeLink === 'about' }" (click)="setActive('about')">Om mig</a></li>
-    <li><a href="#services" [ngClass]="{ active: activeLink === 'services' }" (click)="setActive('services')">Ydelser</a></li>
-    <li><a href="#review" [ngClass]="{ active: activeLink === 'review' }" (click)="setActive('review')">Anmeldelser</a></li>
-    <li><a href="#contact" [ngClass]="{ active: activeLink === 'contact' }" (click)="setActive('contact')">Kontakt</a></li>
-    <li><a href="#auth" [ngClass]="{ active: activeLink === 'auth' }" (click)="setActive('auth')">Log ind</a></li>
+  <ul class="navbar" [ngClass]="{ active: isMenuOpen }">
+    <ng-container *ngIf="!hideNavbar">
+      <li>
+        <a
+          [ngClass]="{ active: activeLink === 'home' }"
+          (click)="setActive('home')"
+          >Hjem</a
+        >
+      </li>
+      <li>
+        <a
+          [ngClass]="{ active: activeLink === 'about' }"
+          (click)="setActive('about')"
+          >Om mig</a
+        >
+      </li>
+      <li>
+        <a
+          [ngClass]="{ active: activeLink === 'services' }"
+          (click)="setActive('services')"
+          >Ydelser</a
+        >
+      </li>
+      <li>
+        <a
+          [ngClass]="{ active: activeLink === 'review' }"
+          (click)="setActive('review')"
+          >Anmeldelser</a
+        >
+      </li>
+      <li>
+        <a
+          [ngClass]="{ active: activeLink === 'contact' }"
+          (click)="setActive('contact')"
+          >Kontakt</a
+        >
+      </li>
+    </ng-container>
+    <li>
+      <a
+        routerLink="/login"
+        [ngClass]="{ active: activeLink === 'login' || router.url === '/login' }"
+        (click)="setActive('login')"
+        >Log ind</a
+      >
+    </li>
   </ul>
 </header>

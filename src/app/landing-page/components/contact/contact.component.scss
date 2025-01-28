@@ -44,3 +44,18 @@
     margin-top: 4rem;
   }
 }
+
+@media (max-width: 900px) {
+  #contact {
+    .contact-explainer {
+      width: 80%;
+    }
+  }
+}
+@media (max-width: 500px) {
+  #contact {
+    .contact-explainer {
+      width: 90%;
+    }
+  }
+}

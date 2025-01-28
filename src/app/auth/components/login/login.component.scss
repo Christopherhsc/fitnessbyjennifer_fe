@@ -1,0 +1,46 @@
+section {
+  background-color: var(--snd-bg-color);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .modal {
+    border: 3px solid var(--main-color);
+    padding: 5rem;
+    margin: auto;
+    width: 50%;
+    text-align: left;
+    border-radius: 1rem;
+
+    h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    p {
+      margin-bottom: 2rem;
+    }
+
+    ul li {
+      list-style-type: disc;
+      font-style: italic;
+    }
+  }
+
+  .google-btn{
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 900px) {
+  section {
+    .modal {
+      border: none;
+      padding: 0.5rem;
+      width: 90%;
+      height: 500px;
+    }
+  }
+}
