@@ -1,0 +1,22 @@
+<nav class="sidebar">
+  <ul>
+    <li 
+      (click)="setTab('profile')" 
+      [class.active]="activeTab === 'profile'">
+      Profile
+    </li>
+
+    <li 
+      *ngIf="showScans"
+      (click)="setTab('scannings')" 
+      [class.active]="activeTab === 'scannings'">
+      Scanninger
+    </li>
+
+    <li 
+      (click)="setTab('booking')" 
+      [class.active]="activeTab === 'booking'">
+      Booking
+    </li>
+  </ul>
+</nav>

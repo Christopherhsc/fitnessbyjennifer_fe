@@ -1,15 +1,11 @@
 <header>
-  <a
-    class="logo"
-    [ngClass]="{ active: activeLink === 'home' }"
-    [routerLink]="['/']"
-    >Jennifer <span>Rasmussen</span></a
-  >
+  <a class="logo" [routerLink]="['/']">Jennifer <span>Rasmussen</span></a>
 
   <div class="bx bx-menu" id="menu-icon" (click)="toggleMenu()"></div>
 
   <ul class="navbar" [ngClass]="{ active: isMenuOpen }">
-    <ng-container *ngIf="!hideNavbar">
+    <!-- Ensure this section shows when user is NOT logged in -->
+    <ng-container *ngIf="!isLoggedIn">
       <li>
         <a
           [ngClass]="{ active: activeLink === 'home' }"
@@ -46,13 +42,18 @@
         >
       </li>
     </ng-container>
-    <li>
-      <a
-        routerLink="/login"
-        [ngClass]="{ active: activeLink === 'login' || router.url === '/login' }"
-        (click)="setActive('login')"
-        >Log ind</a
-      >
+
+    <!-- Show login button if NOT logged in -->
+    <li *ngIf="!isLoggedIn">
+      <a (click)="loginWithGoogle()">Log ind</a>
+    </li>
+
+    <!-- Show logout button if logged in -->
+    <li [routerLink]="['/dashboard']"   *ngIf="isLoggedIn">
+      <a>Dashboard</a>
+    </li>
+    <li *ngIf="isLoggedIn">
+      <a (click)="logout()">Log ud</a>
     </li>
   </ul>
 </header>

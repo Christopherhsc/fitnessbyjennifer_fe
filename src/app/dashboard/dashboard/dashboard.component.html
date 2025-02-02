@@ -1,1 +1,10 @@
-<p>dashboard works!</p>
+<section id="dashboard" class="dashboard">
+  <div class="dashboard-container">
+    <app-sidebar [showScans]="showScans" (tabChange)="setActiveTab($event)"></app-sidebar>
+    <div class="dashboard-content">
+      <app-profile *ngIf="activeTab === 'profile'" (scansVisibilityChange)="updateScansVisibility($event)"></app-profile>
+      <app-booking *ngIf="activeTab === 'booking'"></app-booking>
+      <app-scannings *ngIf="activeTab === 'scannings' && showScans"></app-scannings>
+    </div>
+  </div>
+</section>

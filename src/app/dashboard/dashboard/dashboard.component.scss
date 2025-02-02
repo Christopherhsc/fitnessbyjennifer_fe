@@ -1,0 +1,33 @@
+section {
+  background-color: var(--snd-bg-color);
+  display: flex;
+  justify-content: center;
+  width: 100%;
+
+  .dashboard-container {
+    display: flex;
+    height: 700px;
+    width: 100%;
+    border: 1px solid var(--main-color);
+    margin: auto;
+    justify-content: center;
+    margin-top: 10rem;
+    border-radius: 1rem;
+
+    app-sidebar {
+      width: 200px;
+      color: white;
+      padding: 1rem;
+      border-right: 1px solid var(--main-color);
+    }
+
+    .dashboard-content {
+      display: flex;
+      justify-content: center;
+      border-radius: 1rem;
+      flex-grow: 1;
+      padding: 2rem;
+      background-color: var(--snd-bg-color);
+    }
+  }
+}

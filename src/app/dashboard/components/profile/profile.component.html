@@ -1,0 +1,58 @@
+<div id="profile" class="profile">
+  <div class="profile-container">
+    <h2>
+      Velkommen, <span>{{ firstName || "Guest" }}!</span>
+    </h2>
+    <img
+      *ngIf="profileImage"
+      [src]="profileImage"
+      onerror="this.onerror=null;this.src='/default_profile_image.jpg'"
+      alt="Profile Picture"
+      class="profile-img"
+    />
+    <p>{{ email }}</p>
+  </div>
+
+  <div class="profile-information">
+    <p>
+      Velkommen til <span>dashboardet</span>! <br> Her kan du foretage bookinger og få adgang til
+      dine scanninger. Dine data vedrørende scanninger og bookinger deles
+      udelukkende med dig og Jennifer.
+    </p>
+  </div>
+
+  <!-- Profile Settings Grid -->
+  <div class="profile-settings">
+    <!-- Hide Scans -->
+    <div class="setting">
+      <label class="switch">
+        <input type="checkbox" [(ngModel)]="showScans" (ngModelChange)="profileSettings()" />
+        <span class="slider round"></span>
+      </label>
+      <span>Mine scanninger må vises på hjemmesiden</span>
+    </div>
+  
+    <!-- Booking Reminders -->
+    <div class="setting">
+      <label class="switch">
+        <input type="checkbox" [(ngModel)]="bookingReminders" (ngModelChange)="profileSettings()" />
+        <span class="slider round"></span>
+      </label>
+      <span>Modtag bookingpåmindelser</span>
+  
+      <!-- Phone Number Input (Shows when bookingReminders is true) -->
+      <input 
+        *ngIf="bookingReminders" 
+        type="tel" 
+        placeholder="Indtast dit telefonnummer (8 cifre)"
+        [(ngModel)]="phoneNumber"
+        (input)="validatePhoneNumber()"
+        class="phone-input"
+        maxlength="8"
+        pattern="[0-9]{8}"
+      />
+      <p *ngIf="phoneError" class="error-text">{{ phoneError }}</p>
+    </div>
+  </div>
+  
+</div>
