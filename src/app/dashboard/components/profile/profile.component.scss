@@ -25,6 +25,10 @@
   
     .profile-information {
       margin-top: 2rem;
+
+      span{
+        color: var(--main-color)
+      }
     }
   
     .profile-settings {

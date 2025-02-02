@@ -28,7 +28,7 @@ export class DashboardComponent {
     this.showScans = showScans;
 
     // ✅ If the current tab is 'scannings' and we disable it, switch to 'profile'
-    if (!this.showScans && this.activeTab === 'scannings') {
+    if (!this.showScans && this.activeTab === 'profile') {
       this.activeTab = 'profile';
     }
   }

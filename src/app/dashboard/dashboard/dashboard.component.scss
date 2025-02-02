@@ -24,10 +24,17 @@ section {
     .dashboard-content {
       display: flex;
       justify-content: center;
+      width: 100%;
       border-radius: 1rem;
       flex-grow: 1;
       padding: 2rem;
       background-color: var(--snd-bg-color);
+
+      app-profile,
+      app-booking,
+      app-scannings{
+        width: 100%;
+      }
     }
   }
 }

@@ -1,1 +1,67 @@
-<p>scannings works!</p>
+<div class="scannings-container">
+  <div class="form-and-list">
+    <!-- Form Section -->
+    <form (submit)="addData($event)" class="form-section">
+      <h3>Tilføj data</h3>
+
+      <!-- Value Inputs in a Row -->
+      <div class="value-inputs">
+        <div>
+          <label for="date">Dato:</label>
+          <input
+            type="date"
+            id="date"
+            name="date"
+            [(ngModel)]="newDate"
+            required
+          />
+        </div>
+
+        <div>
+          <label for="weight">Vægt:</label>
+          <input type="number" id="weight" name="weight" [(ngModel)]="weight" />
+        </div>
+
+        <div>
+          <label for="value2">Fedt procent:</label>
+          <input type="number" id="value2" name="value2" [(ngModel)]="value2" />
+        </div>
+
+        <div>
+          <label for="value3">Muskelmasse:</label>
+          <input type="number" id="value3" name="value3" [(ngModel)]="value3" />
+        </div>
+      </div>
+
+      <button type="submit">Tilføj</button>
+    </form>
+
+    <!-- Data List Section -->
+    <div class="data-list" [class.overflow]="data.length > 5">
+      <h3>Dine Data</h3>
+      <ul>
+        <!-- Headers for sorting -->
+        <li class="header">
+          <span (click)="sortData('date')">Dato</span>
+          <span (click)="sortData('vægt')">Vægt</span>
+          <span (click)="sortData('fedt')">Fedt %</span>
+          <span (click)="sortData('muskelmasse')">Muskelmasse</span>
+        </li>
+
+        <!-- Data Rows -->
+        <li *ngFor="let item of data; let i = index">
+          <span>{{ item.date }}</span>
+          <span>{{ item.weight ?? "-" }}</span>
+          <span>{{ item.fatPercentage ?? "-" }}</span>
+          <span>{{ item.muscleMass ?? "-" }}</span>
+          <button (click)="deleteData(i)">Slet</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Chart -->
+  <div class="canvas-container">
+    <canvas #chartCanvas></canvas>
+  </div>
+</div>
