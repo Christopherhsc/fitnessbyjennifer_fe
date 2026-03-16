@@ -1,47 +1,63 @@
 footer {
-  position: relative;
-  bottom: 0;
-  width: 100%;
-  padding: 40px 0;
-  background: var(--snd-bg-color);
-
-  .social {
-    text-align: center;
-    padding-bottom: 20px;
-    color: var(--main-color);
-
-    a {
-      font-size: var(--s-text);
-      color: var(--main-color);
-      width: 42px;
-      height: 42px;
-      line-height: 42px;
-      display: inline-block;
-      text-align: center;
-      border: 2px solid var(--main-color);
-      border-radius: 50%;
-      margin: 0 10px;
-      transition: 0.3s ease-in-out;
-
-      &:hover {
-        transform: scale(1.2) translateY(-5px);
-        background: var(--main-color);
-        color: var(--snd-bg-color);
-        box-shadow: 0 0 25px var(--text-color);
-      }
-    }
-  }
-
-  .copyright{
-    margin-top: 20px;
-    text-align: center;
-    font-size: var(--s-text);
-    color: var(--text-color);
-  }
+  padding: 0 0 2rem;
 }
 
-@media (max-width: 991px) {
-  .footer{
-    padding: 40px 0;
+.footer-shell {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  width: min(1180px, calc(100vw - 1.6rem));
+  margin: 0 auto;
+  padding: 1.4rem 1.6rem;
+  border: 1px solid var(--border-color);
+  border-radius: 2rem;
+  background: rgba(255, 250, 244, 0.66);
+  box-shadow: var(--shadow-card);
+}
+
+.footer-copy p {
+  max-width: 32rem;
+  margin: 0;
+  color: var(--muted-text);
+  line-height: 1.7;
+}
+
+.social {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid rgba(156, 74, 43, 0.18);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.45);
+  color: var(--main-color-strong);
+  font-size: 1.2rem;
+  transition: transform 180ms ease, background 180ms ease, color 180ms ease;
+}
+
+.social a:hover {
+  transform: translateY(-2px);
+  background: var(--main-color);
+  color: #fff9f3;
+}
+
+.copyright {
+  margin: 1rem 0 0;
+  color: var(--muted-text);
+  text-align: center;
+  font-size: 0.92rem;
+}
+
+@media (max-width: 780px) {
+  .footer-shell {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }

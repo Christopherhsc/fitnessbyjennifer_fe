@@ -1,59 +1,50 @@
-<header>
-  <a class="logo" [routerLink]="['/']">Jennifer <span>Rasmussen</span></a>
+<header [class.scrolled]="isScrolled">
+  <div class="header-shell">
+    <a class="logo" [routerLink]="['/']" (click)="setActive('home')">
+      <span class="logo-mark">Fitness</span>
+      <span class="logo-name">Jennifer Rasmussen</span>
+    </a>
 
-  <div class="bx bx-menu" id="menu-icon" (click)="toggleMenu()"></div>
+    <button
+      type="button"
+      class="menu-toggle"
+      aria-label="Åbn menu"
+      (click)="toggleMenu()"
+    >
+      <i class="bx" [ngClass]="isMenuOpen ? 'bx-x' : 'bx-menu'"></i>
+    </button>
 
-  <ul class="navbar" [ngClass]="{ active: isMenuOpen }">
-    <!-- Ensure this section shows when user is NOT logged in -->
-    <ng-container *ngIf="!isLoggedIn">
-      <li>
-        <a
-          [ngClass]="{ active: activeLink === 'home' }"
-          (click)="setActive('home')"
-          >Hjem</a
-        >
-      </li>
-      <li>
-        <a
-          [ngClass]="{ active: activeLink === 'about' }"
-          (click)="setActive('about')"
-          >Om mig</a
-        >
-      </li>
-      <li>
-        <a
-          [ngClass]="{ active: activeLink === 'services' }"
-          (click)="setActive('services')"
-          >Ydelser</a
-        >
-      </li>
-      <li>
-        <a
-          [ngClass]="{ active: activeLink === 'review' }"
-          (click)="setActive('review')"
-          >Anmeldelser</a
-        >
-      </li>
-      <li>
-        <a
-          [ngClass]="{ active: activeLink === 'contact' }"
-          (click)="setActive('contact')"
-          >Kontakt</a
-        >
-      </li>
-    </ng-container>
+    <nav class="navbar" [ngClass]="{ active: isMenuOpen }">
+      <ul class="nav-links">
+        <ng-container *ngIf="!isLoggedIn">
+          <li *ngFor="let link of navLinks; let i = index; trackBy: trackLink">
+            <a
+              [ngClass]="{ active: activeLink === link.id }"
+              (click)="setActive(link.id)"
+            >
+              {{ link.label }}
+            </a>
+          </li>
+        </ng-container>
+      </ul>
 
-    <!-- Show login button if NOT logged in -->
-    <li *ngIf="!isLoggedIn">
-      <a (click)="loginWithGoogle()">Log ind</a>
-    </li>
+      <div class="nav-actions">
+        <a
+          *ngIf="isLoggedIn"
+          class="ghost-link"
+          [routerLink]="['/dashboard']"
+          (click)="isMenuOpen = false"
+        >
+          Dashboard
+        </a>
 
-    <!-- Show logout button if logged in -->
-    <li [routerLink]="['/dashboard']"   *ngIf="isLoggedIn">
-      <a>Dashboard</a>
-    </li>
-    <li *ngIf="isLoggedIn">
-      <a (click)="logout()">Log ud</a>
-    </li>
-  </ul>
+        <button *ngIf="!isLoggedIn" type="button" class="btn" (click)="loginWithGoogle()">
+          Log ind
+        </button>
+        <button *ngIf="isLoggedIn" type="button" class="btn btn-secondary" (click)="logout()">
+          Log ud
+        </button>
+      </div>
+    </nav>
+  </div>
 </header>

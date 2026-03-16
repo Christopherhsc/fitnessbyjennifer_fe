@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { environment } from '../environments/environment';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { AuthService } from './shared/services/auth.service';
 

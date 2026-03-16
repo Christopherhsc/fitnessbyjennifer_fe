@@ -1,61 +1,68 @@
-#contact {
-  background: var(--snd-bg-color);
+.contact-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.contact-points {
+  display: grid;
+  gap: 0.9rem;
+  margin: 1.8rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.contact-points li {
+  position: relative;
+  padding-left: 1.3rem;
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+.contact-points li::before {
+  content: '';
+  position: absolute;
+  top: 0.6rem;
+  left: 0;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--main-color);
+}
+
+.contact-actions {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 1.8rem;
+  background: rgba(255, 255, 255, 0.34);
+}
 
-  .contact-explainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 50%;
-    margin: auto;
+.contact-meta {
+  display: grid;
+  gap: 0.45rem;
+}
 
-    .paragraph-container {
-      border-left: 1px solid var(--main-color);
-      padding-left: 1rem;
-      margin-top: 4rem;
+.contact-meta span {
+  color: var(--main-color-strong);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.16rem;
+  text-transform: uppercase;
+}
 
-      h2 {
-        font-size: var(--m-text);
-      }
-
-      p {
-        text-align: left;
-        font-size: var(--s-text);
-        color: var(--text-color);
-
-        margin-top: 1rem;
-
-        &:first-child {
-          margin-top: 0rem;
-        }
-      }
-    }
-
-    p {
-      margin-top: 1rem;
-      color: var(--main-color);
-      font-size: var(--xs-text);
-    }
-  }
-  .email-btn {
-    display: flex;
-    justify-content: center;
-    margin-top: 4rem;
-  }
+.contact-meta strong {
+  font-size: 1.05rem;
+  line-height: 1.5;
 }
 
 @media (max-width: 900px) {
-  #contact {
-    .contact-explainer {
-      width: 80%;
-    }
-  }
-}
-@media (max-width: 500px) {
-  #contact {
-    .contact-explainer {
-      width: 90%;
-    }
+  .contact-card {
+    grid-template-columns: 1fr;
+    padding: 1.4rem;
   }
 }

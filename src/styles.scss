@@ -1,167 +1,253 @@
-
-// Custom Theming for Angular Material
-// For more information: https://material.angular.io/guide/theming
 @use '@angular/material' as mat;
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@500;600;700&display=swap');
 
 html {
   @include mat.theme((
     color: (
       theme-type: light,
-      primary: mat.$azure-palette,
-      tertiary: mat.$blue-palette,
+      primary: mat.$orange-palette,
+      tertiary: mat.$rose-palette,
     ),
-    typography: Roboto,
+    typography: Manrope,
     density: 0,
   ));
-}/* You can add global styles to this file, and also import other style files */
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  text-decoration: none;
-  list-style: none;
-  border: none;
-  outline: none;
-  scroll-behavior: smooth;
-  font-family: -apply-system, sans-serif;
 }
 
 :root {
-  --bg-color: #000;
-  --snd-bg-color: #111;
-  --text-color: #ffffff;
-  --np-color: #ffffff91;
-  --main-color: #45ffca;
+  --bg-color: #f5efe8;
+  --surface-color: rgba(255, 250, 244, 0.78);
+  --surface-strong: #fffaf4;
+  --surface-contrast: #2f221d;
+  --border-color: rgba(78, 56, 46, 0.14);
+  --text-color: #221814;
+  --muted-text: #6d5a51;
+  --main-color: #c9704f;
+  --main-color-strong: #9c4a2b;
+  --accent-color: #7a8f76;
+  --accent-soft: #d8e0d4;
+  --shadow-soft: 0 24px 60px rgba(78, 56, 46, 0.14);
+  --shadow-card: 0 18px 40px rgba(78, 56, 46, 0.1);
+  --section-width: min(1180px, calc(100vw - 3rem));
+  --hero-title: clamp(1.9rem, 5.1vw, 3.7rem);
+  --section-title: clamp(2.5rem, 5vw, 4.4rem);
+  --card-title: clamp(1.35rem, 2.3vw, 1.85rem);
+  --body-lg: clamp(1.05rem, 1.8vw, 1.2rem);
+  --body-md: 1rem;
+  --body-sm: 0.92rem;
+}
 
-  --niche-color: #8d6e63;
-
-  --3xl-text: 11.25rem;
-  --xl-text: 3.125rem;
-  --l-text: 2.1875rem;
-  --m-text: 1.875rem;
-  --s-text: 1.125rem;
-  --xs-text: 1rem;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 html,
 body {
+  min-height: 100%;
   margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  width: 100%;
-  height: 100%;
   overflow-x: hidden;
-  background: var(--bg-color);
-  color: var(--text-color);
   scroll-behavior: smooth;
 }
 
+body {
+  background:
+    radial-gradient(circle at top left, rgba(201, 112, 79, 0.22), transparent 32%),
+    radial-gradient(circle at top right, rgba(122, 143, 118, 0.2), transparent 30%),
+    linear-gradient(180deg, #f9f3ed 0%, #f2ebe3 54%, #efe7de 100%);
+  color: var(--text-color);
+  font-family: 'Manrope', 'Segoe UI', sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
 
 section {
-  min-height: 100vh;
-  padding: 10rem 8% 2rem;
+  position: relative;
+  width: 100%;
+  padding: 7rem 0;
+}
+
+.section-shell {
+  width: var(--section-width);
+  margin: 0 auto;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+  color: var(--main-color-strong);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.2rem;
+  text-transform: uppercase;
+}
+
+.eyebrow::before {
+  content: '';
+  width: 2.5rem;
+  height: 1px;
+  background: currentColor;
 }
 
 .heading {
-  text-align: center;
-  font-size: var(--l-text);
+  margin: 0;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: var(--section-title);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
   color: var(--text-color);
+}
 
-  span {
-    color: var(--main-color);
-  }
+.heading span {
+  color: var(--main-color);
+}
+
+.section-copy {
+  max-width: 42rem;
+  margin-top: 1.2rem;
+  color: var(--muted-text);
+  font-size: var(--body-lg);
+  line-height: 1.8;
 }
 
 .btn {
-  display: inline-block;
-  padding: 1rem 2rem;
-  background: var(--main-color);
-  border-radius: 0.7rem;
-  box-shadow: none;
-  font-size: var(--s-text);
-  color: var(--bg-color);
-  letter-spacing: 0.1rem;
-  font-weight: 600;
-  transition: 0.5s all ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  min-height: 3.5rem;
+  padding: 0.95rem 1.45rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--main-color) 0%, var(--main-color-strong) 100%);
+  box-shadow: 0 16px 28px rgba(156, 74, 43, 0.22);
+  color: #fff9f3;
   cursor: pointer;
+  font-size: 0.96rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease, background 180ms ease;
+}
 
-  &:hover {
-    color: var(--text-color);
-    box-shadow: 0 0 1.6rem var(--main-color);
-  }
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 22px 32px rgba(156, 74, 43, 0.28);
+}
+
+.btn:focus-visible {
+  outline: 3px solid rgba(201, 112, 79, 0.24);
+  outline-offset: 3px;
+}
+
+.btn.btn-secondary {
+  background: rgba(255, 250, 244, 0.72);
+  border-color: rgba(156, 74, 43, 0.18);
+  box-shadow: none;
+  color: var(--text-color);
+}
+
+.card-surface {
+  border: 1px solid var(--border-color);
+  border-radius: 2rem;
+  background: var(--surface-color);
+  backdrop-filter: blur(18px);
+  box-shadow: var(--shadow-card);
 }
 
 ::-webkit-scrollbar {
-  background-color: var(--text-color);
+  width: 0.8rem;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 250, 244, 0.8);
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: var(--main-color);
+  border: 2px solid rgba(255, 250, 244, 0.8);
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--main-color), var(--main-color-strong));
+}
 
-  &:hover {
-    background-color: var(--snd-bg-color);
+@keyframes floatUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-@media (max-width: 1500px) {
-  .btn {
-    padding: 0.8rem 1rem;
-    font-size: var(--s-text);
+.reveal {
+  --reveal-distance: 36px;
+  --reveal-scale: 0.96;
+  --reveal-delay: 0ms;
+  opacity: 0;
+  will-change: opacity, transform;
+  transition:
+    opacity 720ms cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay),
+    transform 720ms cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay);
+}
+
+.reveal-up {
+  transform: translateY(var(--reveal-distance));
+}
+
+.reveal-left {
+  transform: translateX(calc(var(--reveal-distance) * -1));
+}
+
+.reveal-right {
+  transform: translateX(var(--reveal-distance));
+}
+
+.reveal-scale {
+  transform: translateY(18px) scale(var(--reveal-scale));
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 }
 
-@media (max-width: 1400px) {
-  :root {
-    --3xl-text: 8.75rem;
-    --xl-text: 3.125rem;
-    --l-text: 2.5rem;
-    --m-text: 1.75rem;
-    --s-text: 1.125rem;
-    --xs-text: 0.875rem;
-  }
-}
-
-@media (max-width: 1100px) {
-  .btn {
-    padding: 0.6rem 0.8rem;
-    font-size: var(--s-text);
-  }
-}
-
-@media (max-width: 991px) {
-  :root {
-    --3xl-text: 5.625rem;
-    --2xl-text: 4rem;
-    --xl-text: 2.5rem;
-    --l-text: 1.875rem;
-    --m-text: 1.3125rem;
-    --s-text: 0.875rem;
-  }
+@media (max-width: 900px) {
   section {
-    padding: 10rem 3%;
+    padding: 5.5rem 0;
   }
-}
 
-@media (max-width: 600px) {
   :root {
-    --3xl-text: 60px;
-    --xs-text: 10px;
+    --section-width: min(1180px, calc(100vw - 1.4rem));
+  }
+
+  .section-copy {
+    font-size: 1rem;
+    line-height: 1.7;
   }
 }
-
-@media (max-width: 400px) {
-  :root {
-    --3xl-text: 40px;
-    --xl-text: 28px;
-    --l-text: 18px;
-    --m-text: 12px;
-    --s-text: 10px;
-  }
-  section {
-    padding: 10rem 0 1rem;
-  }
-}
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

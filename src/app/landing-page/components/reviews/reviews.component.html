@@ -1,18 +1,39 @@
 <section class="review" id="review">
-  <div class="review-box">
-    <h2 class="heading">Kunde <span>Anmeldelser</span></h2>
+  <div class="section-shell">
+    <div class="review-header">
+      <div appRevealOnScroll>
+        <span class="eyebrow">Anmeldelser</span>
+        <h2 class="heading">Klienter beskriver et samarbejde med <span>ro og resultater</span></h2>
+      </div>
+
+      <p class="section-copy" appRevealOnScroll [revealDelay]="120">
+        Det vigtigste for mig er, at du føler dig tryg, forstået og godt
+        guidet. Her er et lille indblik i, hvordan forløbet opleves fra den
+        anden side.
+      </p>
+    </div>
 
     <div class="wrapper">
-      <div class="review-item" *ngFor="let review of reviews">
-        <h2>{{ review.name }}</h2>
-        <div class="rating">
-          <i id="star"
-            class="bx bxs-star"
-            *ngFor="let star of [].constructor(review.rating)"
-          ></i>
+      <article
+        class="review-item"
+        *ngFor="let review of reviews; let i = index"
+        appRevealOnScroll
+        revealVariant="scale"
+        [revealDelay]="120 + i * 120"
+      >
+        <span class="quote-mark">"</span>
+        <div class="rating" appRevealOnScroll [revealDelay]="180 + i * 120">
+          <i class="bx bxs-star" *ngFor="let star of getStars(review.rating)"></i>
         </div>
-        <p>{{ review.reviewText }}</p>
-      </div>
+        <p
+          class="review-copy"
+          appRevealOnScroll
+          [revealDelay]="320 + i * 140"
+        >
+          {{ review.reviewText }}
+        </p>
+        <h3 appRevealOnScroll [revealDelay]="360 + i * 120">{{ review.name }}</h3>
+      </article>
     </div>
   </div>
 </section>

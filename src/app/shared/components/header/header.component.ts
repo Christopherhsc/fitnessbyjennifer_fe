@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { AfterViewInit, Component, HostListener, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { environment } from '../../../../environments/environment';
@@ -12,23 +12,28 @@ import { environment } from '../../../../environments/environment';
   standalone: true,
 })
 export class HeaderComponent implements OnInit, AfterViewInit {
-  activeLink: string = '';
-  isMenuOpen: boolean = false;
-  isLoggedIn: boolean = false; // Track login state
+  readonly navLinks = [
+    { id: 'home', label: 'Hjem' },
+    { id: 'about', label: 'Om mig' },
+    { id: 'services', label: 'Ydelser' },
+    { id: 'review', label: 'Anmeldelser' },
+    { id: 'contact', label: 'Kontakt' },
+  ];
+
+  activeLink = 'home';
+  isMenuOpen = false;
+  isLoggedIn = false;
+  isScrolled = false;
 
   constructor(public router: Router, private authService: AuthService) {}
 
   ngOnInit(): void {
-    // Subscribe to auth state
     this.authService.isLoggedIn$.subscribe((status) => {
       this.isLoggedIn = status;
     });
 
     window['handleCredentialResponse'] = (response: any) => {
-      console.log('Encoded JWT ID token:', response.credential);
-      this.authService.login(response.credential); // Update auth state
-
-      // Navigate to dashboard or home
+      this.authService.login(response.credential);
       this.router.navigate(['/dashboard']);
     };
   }
@@ -54,10 +59,8 @@ export class HeaderComponent implements OnInit, AfterViewInit {
 
   loginWithGoogle(): void {
     if (window.google && window.google.accounts.id) {
-      // Ensure the user is fully signed out before re-logging in
       window.google.accounts.id.disableAutoSelect();
-  
-      // Wait briefly before triggering login to allow session reset
+
       setTimeout(() => {
         window.google.accounts.id.prompt();
       }, 500);
@@ -70,21 +73,27 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     this.authService.logout();
   }
 
+  @HostListener('window:scroll')
+  onScroll(): void {
+    this.isScrolled = window.scrollY > 24;
+  }
+
+  trackLink(index: number): number {
+    return index;
+  }
+
   private loadGoogleSignIn(): void {
     if (window.google && window.google.accounts.id) {
-      // Force a fresh session by revoking any existing one
       window.google.accounts.id.revoke();
-  
+
       window.google.accounts.id.initialize({
         client_id: environment.googleClientId,
         callback: window['handleCredentialResponse'],
-        ux_mode: 'popup', // Avoid FedCM issues
-        itp_support: true, // Improve cross-site cookie support
+        ux_mode: 'popup',
+        itp_support: true,
       });
     }
   }
-  
-  
 
   private ensureGoogleLibrary(callback: () => void): void {
     if (window.google && window.google.accounts) {

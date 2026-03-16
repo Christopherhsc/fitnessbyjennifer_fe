@@ -4,7 +4,7 @@ export const plansInformation = [
       planText:
         'En personlig træner er det rigtige valg for dig, hvis du ønsker at udfordre dig selv, blive klogere på din egen krop samt opnå resultater, du måske ikke har kunne opnå før. Jeg mener, at god kemi og et stærkt samarbejde er essentielt, når det omhandler personlig træning. På baggrund af det, vil jeg altid tage en uformel og uforpligtende samtale, hvor vi sammen snakker om dine forventninger og udarbejder dine målsætninger. Et forløb hos mig bliver skræddersyet til dine hverdagsmønstre – et forløb skal tilpasses dig, så det er realistisk og motiverende.',
       dotPoints: [
-        'Udvikl en personlig træningsplan.',
+        'Udvikling af en personlig træningsplan.',
         'Fokus på samarbejde og motivation.',
         'Skræddersyede målsætninger.',
         'Fleksible og realistiske forløb.',
@@ -15,7 +15,7 @@ export const plansInformation = [
       planText:
         'Jeg tilbyder også online personlig træning. Et sådan forløb er præcis det samme som et fysisk forløb, dog uden de fysiske træningstimer. Træningsprogrammering, kostvejledning, check-ins samt 1-1 kontakten er præcis den samme som et fysisk forløb hos mig. Der er i dette forløb i højere grad kommunikation telefonisk, da du netop ikke mødes med mig fysisk hver uge. Der er i online personlig træning stor fokus på, at gå i dybden med din kost, træning og livsstil.',
       dotPoints: [
-        'Fysisk forløb uden træningstimer.',
+        'Online forløb uden træningstimer.',
         'Programmering, kostvejledning og check-ins.',
         'Telefonisk kommunikation og support.',
         'Fokus på dybdegående kost og livsstil.',

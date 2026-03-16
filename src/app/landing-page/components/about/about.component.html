@@ -1,28 +1,71 @@
 <section class="about" id="about">
-  <h2 class="heading">Om <span>Mig</span></h2>
+  <div class="section-shell">
+    <div class="about-header">
+      <div appRevealOnScroll>
+        <span class="eyebrow">Om Jennifer</span>
+        <h2 class="heading">En coach, der ser <span>hele dig</span></h2>
+        <p class="about-guide">
+          Klik på et billede for at læse mere.
+        </p>
+      </div>
 
-  <div class="about-cards">
-    <div
-      class="card"
-      *ngFor="let card of cardData; let i = index"
-      [class.active]="selectedCard === card"
-      (click)="selectCard(i)"
-    >
-      <div class="card-image">
-        <img [src]="card.image" [alt]="card.cardTitle" />
-        <div class="card-text">
-          <ng-container *ngIf="isBelow1400px; else titleTemplate">
-            {{ card.cardText }}
-          </ng-container>
-          <ng-template #titleTemplate>
-            {{ card.cardTitle }}
-          </ng-template>
+      <p class="section-copy" appRevealOnScroll [revealDelay]="120">
+        Et godt forløb bygger på tillid, tydelig retning og realistiske
+        rammer. Derfor starter vi med at forstå din situation, dine mål og
+        hvad der skal til for, at du kan lykkes over tid.
+      </p>
+    </div>
+
+    <div class="about-layout">
+      <div class="about-cards">
+        <button
+          class="card"
+          type="button"
+          *ngFor="let card of cardData; let i = index; trackBy: trackCard"
+          [class.active]="selectedCard === card"
+          (click)="selectCard(i)"
+          appRevealOnScroll
+          revealVariant="scale"
+          [revealDelay]="120 + i * 120"
+        >
+          <div class="card-image">
+            <img [src]="card.image" [alt]="card.cardTitle" />
+            <span class="card-state" *ngIf="selectedCard === card">Aktiv</span>
+          </div>
+
+          <div class="card-copy">
+            <h3>{{ card.cardTitle }}</h3>
+            <span class="card-hint">
+              {{ selectedCard === card ? '' : 'Klik for at læse mere' }}
+            </span>
+            <p *ngIf="isBelow1400px">{{ card.cardText }}</p>
+          </div>
+        </button>
+      </div>
+
+      <div
+        *ngIf="!isBelow1400px"
+        class="about-information card-surface"
+        appRevealOnScroll
+        revealVariant="right"
+        [revealDelay]="160"
+      >
+        <span class="eyebrow">Valgt fokus</span>
+        <div class="about-information-header">
+          <h3>{{ selectedCard.cardTitle }}</h3>
+          <p>Klik på kortene til venstre for at læse mere.</p>
         </div>
+
+        <p [class.fade-in]="fadeInClass" class="fade-text">
+          {{ selectedCard.cardText }}
+        </p>
+
+        <ul class="highlights">
+          <li>Gratis indledende samtale med fokus på din hverdag og dine behov</li>
+          <li>Et tydeligt næste skridt, så du altid ved hvad du arbejder hen imod</li>
+          <li>Et forløb der er realistisk, menneskeligt og målbart</li>
+        </ul>
       </div>
     </div>
-  </div>
-
-  <div *ngIf="!isBelow1400px" class="about-information">
-    <p [class.fade-in]="fadeInClass" class="fade-text">{{ selectedCard.cardText }}</p>
   </div>
 </section>

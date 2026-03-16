@@ -1,16 +1,49 @@
 <section class="home" id="home">
-  <div class="home-content">
-    <h3>Opnå Dit</h3>
-    <h1>Drømmeresultat</h1>
-    <h3><span class="multiple-text">Med Styrketræning</span></h3>
-    <p>
-      Personlig træning er en investering i dig selv – en sund og stærk krop styrker både din fysik og livskvalitet.
-    </p>
+  <div class="section-shell home-shell">
+    <div class="home-content" appRevealOnScroll revealVariant="left">
+      <span class="eyebrow">Personlig Træning i København</span>
+      <h1>Byg en stærkere krop med et forløb, der passer til dit liv.</h1>
+      <p class="lead">
+        Målrettet træning, personlig sparring og et trygt samarbejde, der
+        giver plads til både ambitioner, hverdag og varige resultater.
+      </p>
 
-    <a href="#contact" class="btn">Kontakt</a>
+      <div class="typewriter" appRevealOnScroll [revealDelay]="120">
+        <span>Styrke. Balance. Resultater.</span>
+      </div>
 
-    <div class="home-img">
-        <img src="/landingpage-image.png" alt="Home Image"/>
+      <div class="home-actions">
+        <a href="#contact" class="btn">Book en uforpligtende samtale</a>
+        <a href="#services" class="btn btn-secondary">Se mine ydelser</a>
+      </div>
+
+      <div class="home-metrics">
+        <div class="metric card-surface" appRevealOnScroll [revealDelay]="120">
+          <strong>1:1</strong>
+          <span>Personligt tilpasset forløb fra start</span>
+        </div>
+        <div class="metric card-surface" appRevealOnScroll [revealDelay]="220">
+          <strong>Holistisk</strong>
+          <span>Træning, kost og vaner i samme plan</span>
+        </div>
+        <div class="metric card-surface" appRevealOnScroll [revealDelay]="320">
+          <strong>KBH</strong>
+          <span>Fysiske forløb med base i København</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="home-visual" appRevealOnScroll revealVariant="right" [revealDelay]="120">
+      <div class="visual-orb orb-one"></div>
+      <div class="visual-orb orb-two"></div>
+      <div class="image-frame card-surface">
+        <img src="/landingpage-image.png" alt="Jennifer under træning" />
+      </div>
+
+      <div class="floating-note card-surface" appRevealOnScroll revealVariant="scale" [revealDelay]="280">
+        <span>Forløb med retning</span>
+        <strong>Stærkere fysik. Mere energi. Mere ro i processen.</strong>
+      </div>
     </div>
   </div>
 </section>
