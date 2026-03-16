@@ -42,6 +42,8 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     this.ensureGoogleLibrary(() => {
       this.loadGoogleSignIn();
     });
+
+    this.updateActiveSection();
   }
 
   setActive(link: string): void {
@@ -76,6 +78,7 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   @HostListener('window:scroll')
   onScroll(): void {
     this.isScrolled = window.scrollY > 24;
+    this.updateActiveSection();
   }
 
   trackLink(index: number): number {
@@ -106,6 +109,25 @@ export class HeaderComponent implements OnInit, AfterViewInit {
         }
       }, 100);
     }
+  }
+
+  private updateActiveSection(): void {
+    const headerOffset = 180;
+    const scrollPosition = window.scrollY + headerOffset;
+
+    for (const link of [...this.navLinks].reverse()) {
+      const section = document.getElementById(link.id);
+      if (!section) {
+        continue;
+      }
+
+      if (scrollPosition >= section.offsetTop) {
+        this.activeLink = link.id;
+        return;
+      }
+    }
+
+    this.activeLink = this.navLinks[0].id;
   }
 }
 

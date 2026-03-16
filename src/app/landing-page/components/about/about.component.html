@@ -35,7 +35,7 @@
 
           <div class="card-copy">
             <h3>{{ card.cardTitle }}</h3>
-            <span class="card-hint">
+            <span class="card-hint" *ngIf="!isBelow1400px">
               {{ selectedCard === card ? '' : 'Klik for at læse mere' }}
             </span>
             <p *ngIf="isBelow1400px">{{ card.cardText }}</p>
@@ -50,10 +50,8 @@
         revealVariant="right"
         [revealDelay]="160"
       >
-        <span class="eyebrow">Valgt fokus</span>
         <div class="about-information-header">
           <h3>{{ selectedCard.cardTitle }}</h3>
-          <p>Klik på kortene til venstre for at læse mere.</p>
         </div>
 
         <p [class.fade-in]="fadeInClass" class="fade-text">

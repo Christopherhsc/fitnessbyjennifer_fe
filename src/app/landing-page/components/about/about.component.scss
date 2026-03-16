@@ -121,20 +121,11 @@
 
 .card-hint {
   display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
   color: var(--main-color-strong);
   font-size: 0.8rem;
   font-weight: 800;
   letter-spacing: 0.08rem;
   text-transform: uppercase;
-}
-
-.card-hint::after {
-  content: '↗';
-  font-size: 0.95rem;
-  line-height: 1;
-  transform: translateY(-1px);
 }
 
 .card-copy p {

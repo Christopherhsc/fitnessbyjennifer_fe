@@ -28,29 +28,28 @@
     box-shadow 260ms ease,
     border-color 260ms ease,
     background 260ms ease;
-  animation: reviewFloat 7s ease-in-out infinite;
+  animation: reviewFloat 7.4s ease-in-out infinite;
 }
 
 .review-item::before {
   content: '';
   position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: linear-gradient(135deg, rgba(201, 112, 79, 0.12), transparent 38%, rgba(122, 143, 118, 0.1));
-  opacity: 0;
-  transition: opacity 260ms ease;
+  top: 50%;
+  right: -1.5rem;
+  width: 13rem;
+  height: 13rem;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(201, 112, 79, 0.42) 0%, rgba(201, 112, 79, 0.2) 34%, rgba(201, 112, 79, 0) 72%);
+  opacity: 0.75;
+  filter: blur(16px);
+  animation: reviewGlow 8.6s ease-in-out infinite;
   pointer-events: none;
+  z-index: 0;
 }
 
-.review-item:hover {
-  transform: translateY(-8px) rotate(-0.6deg);
-  border-color: rgba(156, 74, 43, 0.22);
-  box-shadow: 0 24px 48px rgba(78, 56, 46, 0.16);
-  background: rgba(255, 250, 244, 0.9);
-}
-
-.review-item:hover::before {
-  opacity: 1;
+.review-item > * {
+  position: relative;
+  z-index: 1;
 }
 
 .quote-mark {
@@ -91,11 +90,28 @@
 }
 
 .review-item:nth-child(2) {
-  animation-delay: 1.2s;
+  animation-delay: 1.1s;
+  animation-duration: 6.6s;
 }
 
 .review-item:nth-child(3) {
-  animation-delay: 2.4s;
+  animation-delay: 2.3s;
+  animation-duration: 8.2s;
+}
+
+.review-item:nth-child(2)::before {
+  animation-delay: 1.7s;
+  animation-duration: 7.2s;
+}
+
+.review-item:nth-child(3)::before {
+  animation-delay: 3.1s;
+  animation-duration: 9.4s;
+}
+
+.review-item:nth-child(1)::before {
+  animation-delay: 0.4s;
+  animation-duration: 8.8s;
 }
 
 @keyframes reviewFloat {
@@ -109,14 +125,27 @@
   }
 }
 
+@keyframes reviewGlow {
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: translate3d(-12%, -50%, 0) scale(0.88);
+  }
+
+  50% {
+    opacity: 0.82;
+    transform: translate3d(-36%, -50%, 0) scale(1.08);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .review-item {
     animation: none;
     transition: none;
   }
 
-  .review-item:hover {
-    transform: none;
+  .review-item::before {
+    animation: none;
   }
 }
 
