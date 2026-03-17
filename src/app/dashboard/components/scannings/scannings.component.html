@@ -10,7 +10,7 @@
   <div class="scannings-grid">
     <form (submit)="addData($event)" class="form-panel">
       <div class="panel-head">
-        <h2>{{ content().addData }}</h2>
+        <h2>{{ formTitle }}</h2>
       </div>
 
       <div class="value-inputs">
@@ -71,7 +71,14 @@
         </div>
       </div>
 
-      <button type="submit">{{ content().addButton }}</button>
+      <div class="form-actions">
+        <button type="submit" [disabled]="isSaving">
+          {{ isSaving ? content().saving : submitLabel }}
+        </button>
+        <button *ngIf="isEditing" type="button" class="button-secondary" (click)="cancelEdit()">
+          {{ content().cancelEdit }}
+        </button>
+      </div>
     </form>
 
     <section class="data-panel">
@@ -79,11 +86,19 @@
         <h2>{{ content().yourData }}</h2>
       </div>
 
-      <div *ngIf="data.length === 0" class="empty-state">
+      <div *ngIf="errorMessage" class="error-state">
+        <p>{{ errorMessage }}</p>
+      </div>
+
+      <div *ngIf="isLoading" class="empty-state">
+        <p>{{ content().loading }}</p>
+      </div>
+
+      <div *ngIf="!isLoading && data.length === 0" class="empty-state">
         <p>{{ content().emptyList }}</p>
       </div>
 
-      <div *ngIf="data.length > 0" class="data-table">
+      <div *ngIf="!isLoading && data.length > 0" class="data-table">
         <div class="data-row data-row-header">
           <button type="button" (click)="sortData('date')">{{ content().date }}</button>
           <button type="button" (click)="sortData('weight')">{{ content().weight }}</button>
@@ -92,14 +107,48 @@
           <span></span>
         </div>
 
-        <div class="data-row" *ngFor="let item of data; let i = index">
-          <span>{{ item.date }}</span>
+        <div
+          class="data-row"
+          [class.is-hidden-from-chart]="!isVisibleInChart(item)"
+          [class.is-editing]="editingScanId === item.id"
+          *ngFor="let item of data; trackBy: trackByScanId"
+        >
+          <span>{{ formatDisplayDate(item.date) }}</span>
           <span>{{ formatMetric(item.weight, content().weightUnit) }}</span>
           <span>{{ formatMetric(item.fatPercentage, content().percentUnit) }}</span>
           <span>{{ formatMetric(item.muscleMass, content().weightUnit) }}</span>
-          <button type="button" class="delete-button" (click)="deleteData(i)">
-            {{ content().delete }}
-          </button>
+          <div class="row-actions">
+            <button type="button" class="icon-button" [attr.aria-label]="content().edit" (click)="startEdit(item)">
+              <i class="bx bx-pencil"></i>
+            </button>
+            <button
+              type="button"
+              class="icon-button"
+              [attr.aria-label]="isVisibleInChart(item) ? content().hideFromChart : content().showInChart"
+              (click)="toggleChartVisibility(item)"
+            >
+              <i class="bx" [class.bx-show]="isVisibleInChart(item)" [class.bx-hide]="!isVisibleInChart(item)"></i>
+            </button>
+            <button
+              type="button"
+              class="icon-button icon-button-danger"
+              [attr.aria-label]="content().delete"
+              (click)="requestDelete(item.id)"
+            >
+              <i class="bx bx-trash"></i>
+            </button>
+          </div>
+          <div *ngIf="pendingDeleteScanId === item.id" class="delete-confirm">
+            <span>{{ content().deletePrompt }}</span>
+            <div class="delete-confirm-actions">
+              <button type="button" class="confirm-delete" (click)="deleteData(item.id)">
+                {{ content().confirmDelete }}
+              </button>
+              <button type="button" class="cancel-delete" (click)="requestDelete(item.id)">
+                {{ content().cancelDelete }}
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </section>

@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { environment } from '../../../environments/environment';
 
 interface AuthUser {
+  id?: string | null;
   name: string | null;
   email: string | null;
   picture: string | null;
@@ -13,6 +14,7 @@ interface AuthUser {
 
 interface PersistedAuthUserResponse {
   user: {
+    id: string;
     email: string;
     name: string;
     picture: string | null;
@@ -72,6 +74,10 @@ export class AuthService {
       const userData = JSON.parse(storedUser) as AuthUser;
       this.loggedIn.next(true);
       this.user.next(userData);
+
+      if (!userData.id && userData.email && userData.name) {
+        void this.refreshStoredUser(userData);
+      }
     } catch {
       this.logout();
     }
@@ -95,10 +101,21 @@ export class AuthService {
     );
 
     return {
+      id: response.user.id,
       email: response.user.email,
       name: response.user.name,
       picture: response.user.picture,
       role: response.user.role,
     };
+  }
+
+  private async refreshStoredUser(userData: AuthUser): Promise<void> {
+    try {
+      const persistedUser = await this.persistUser(userData);
+      localStorage.setItem(this.userStorageKey, JSON.stringify(persistedUser));
+      this.user.next(persistedUser);
+    } catch (error) {
+      console.error('Failed to refresh stored user.', error);
+    }
   }
 }

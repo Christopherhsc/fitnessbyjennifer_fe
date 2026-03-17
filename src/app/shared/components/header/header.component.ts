@@ -15,6 +15,9 @@ interface HeaderCopy {
   openMenuLabel: string;
   dashboard: string;
   page: string;
+  profile: string;
+  scannings: string;
+  booking: string;
   login: string;
   comingSoon: string;
   logout: string;
@@ -33,6 +36,9 @@ const HEADER_COPY: Record<Language, HeaderCopy> = {
     openMenuLabel: 'Åbn menu',
     dashboard: 'Dashboard',
     page: 'Forside',
+    profile: 'Profil',
+    scannings: 'Scanninger',
+    booking: 'Booking',
     login: 'Log ind',
     comingSoon: 'Kommer',
     logout: 'Log ud',
@@ -49,6 +55,9 @@ const HEADER_COPY: Record<Language, HeaderCopy> = {
     openMenuLabel: 'Open menu',
     dashboard: 'Dashboard',
     page: 'Landing page',
+    profile: 'Profile',
+    scannings: 'Scans',
+    booking: 'Booking',
     login: 'Log in',
     comingSoon: 'Soon',
     logout: 'Log out',
@@ -132,8 +141,18 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     this.languageService.toggleLanguage();
   }
 
-  navigateLoggedIn(): void {
+  navigateLoggedIn(tab?: 'profile' | 'scannings' | 'booking'): void {
     this.isMenuOpen = false;
+
+    if (tab) {
+      void this.router.navigate(['/dashboard'], {
+        queryParams: {
+          tab,
+        },
+      });
+      return;
+    }
+
     void this.router.navigate([this.isDashboardRoute() ? '/' : '/dashboard']);
   }
 
@@ -166,6 +185,10 @@ export class HeaderComponent implements OnInit, AfterViewInit {
 
   isDashboardRoute(): boolean {
     return this.currentUrl.startsWith('/dashboard');
+  }
+
+  isDashboardTab(tab: 'profile' | 'scannings' | 'booking'): boolean {
+    return this.currentUrl.includes(`tab=${tab}`);
   }
 
   @HostListener('window:scroll')

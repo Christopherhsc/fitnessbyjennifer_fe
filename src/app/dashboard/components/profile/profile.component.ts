@@ -11,7 +11,6 @@ interface ProfileCopy {
   introTitle: string;
   privacyTitle: string;
   privacyText: string;
-  visibilityLabel: string;
   remindersTitle: string;
   remindersText: string;
   remindersLabel: string;
@@ -30,7 +29,6 @@ const PROFILE_COPY: Record<Language, ProfileCopy> = {
     privacyTitle: 'Privat og personligt',
     privacyText:
       'Oplysninger om scanninger og bookinger deles kun mellem dig og Jennifer.',
-    visibilityLabel: 'Mine scanninger må vises på hjemmesiden',
     remindersTitle: 'Bookingpåmindelser',
     remindersText: 'Få en enkel SMS-påmindelse før dine kommende bookinger.',
     remindersLabel: 'Modtag bookingpåmindelser',
@@ -46,7 +44,6 @@ const PROFILE_COPY: Record<Language, ProfileCopy> = {
     introTitle: 'Welcome back',
     privacyTitle: 'Private and personal',
     privacyText: 'Information about scans and bookings is shared only between you and Jennifer.',
-    visibilityLabel: 'Allow my scans to be shown on the website',
     remindersTitle: 'Booking reminders',
     remindersText: 'Receive a simple SMS reminder before your upcoming bookings.',
     remindersLabel: 'Receive booking reminders',

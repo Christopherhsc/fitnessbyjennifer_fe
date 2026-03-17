@@ -1,35 +1,5 @@
 <section id="dashboard" class="dashboard">
   <div class="dashboard-container">
-    <div class="dashboard-tabs">
-      <button
-        type="button"
-        class="dashboard-tab"
-        [class.active]="activeTab === 'profile'"
-        (click)="setActiveTab('profile')"
-      >
-        {{ content().profile }}
-      </button>
-
-      <button
-        *ngIf="showScans"
-        type="button"
-        class="dashboard-tab"
-        [class.active]="activeTab === 'scannings'"
-        (click)="setActiveTab('scannings')"
-      >
-        {{ content().scannings }}
-      </button>
-
-      <button
-        type="button"
-        class="dashboard-tab"
-        [class.active]="activeTab === 'booking'"
-        (click)="setActiveTab('booking')"
-      >
-        {{ content().booking }}
-      </button>
-    </div>
-
     <div class="dashboard-content">
       <app-profile
         *ngIf="activeTab === 'profile'"

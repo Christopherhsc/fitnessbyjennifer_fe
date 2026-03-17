@@ -29,12 +29,32 @@
 
         <li *ngIf="isLoggedIn">
           <a
-            [class.active]="isDashboardRoute()"
+            [class.active]="!isDashboardRoute()"
             (click)="navigateLoggedIn()"
           >
-            {{ isDashboardRoute() ? content().page : content().dashboard }}
+            {{ content().page }}
           </a>
         </li>
+
+        <ng-container *ngIf="isLoggedIn">
+          <li>
+            <a [class.active]="isDashboardTab('profile')" (click)="navigateLoggedIn('profile')">
+              {{ content().profile }}
+            </a>
+          </li>
+
+          <li>
+            <a [class.active]="isDashboardTab('scannings')" (click)="navigateLoggedIn('scannings')">
+              {{ content().scannings }}
+            </a>
+          </li>
+
+          <li>
+            <a [class.active]="isDashboardTab('booking')" (click)="navigateLoggedIn('booking')">
+              {{ content().booking }}
+            </a>
+          </li>
+        </ng-container>
       </ul>
 
       <div class="nav-actions">

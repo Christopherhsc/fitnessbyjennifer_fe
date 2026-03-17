@@ -27,19 +27,6 @@
   </header>
   <section class="settings-grid">
     <article class="setting-card">
-      <label class="toggle-card">
-        <div class="toggle-copy">
-          <span>{{ content().visibilityLabel }}</span>
-        </div>
-
-        <span class="switch">
-          <input type="checkbox" [(ngModel)]="showScans" (ngModelChange)="profileSettings()" />
-          <span class="slider"></span>
-        </span>
-      </label>
-    </article>
-
-    <article class="setting-card">
       <div class="setting-copy">
         <h3>{{ content().remindersTitle }}</h3>
         <p>{{ content().remindersText }}</p>
