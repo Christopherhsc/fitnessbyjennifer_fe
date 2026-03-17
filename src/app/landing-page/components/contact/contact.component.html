@@ -2,31 +2,25 @@
   <div class="section-shell">
     <div class="contact-card card-surface" appRevealOnScroll>
       <div class="contact-copy" appRevealOnScroll revealVariant="left">
-        <span class="eyebrow">Kontakt</span>
-        <h2 class="heading">Tag det første skridt mod <span>dine mål</span></h2>
-        <p class="section-copy">
-          Hvis du vil høre mere om et forløb, starte med en uforpligtende
-          samtale eller bare afklare, hvad der passer til dig, så skriv til mig.
-          Jeg vender tilbage så hurtigt som muligt.
-        </p>
+        <span class="eyebrow">{{ content().eyebrow }}</span>
+        <h2 class="heading" [innerHTML]="content().title"></h2>
+        <p class="section-copy">{{ content().intro }}</p>
 
         <ul class="contact-points">
-          <li>Gratis og uforpligtende indledende dialog</li>
-          <li>Mulighed for både fysisk og online sparring</li>
-          <li>Fokus på dine mål, udfordringer og hverdagsrammer</li>
+          <li *ngFor="let point of content().points">{{ point }}</li>
         </ul>
       </div>
 
       <div class="contact-actions" appRevealOnScroll revealVariant="right" [revealDelay]="140">
         <a
-          href="mailto:Fitnessbyjennifer25@gmail.com?subject=Kontakt&body=Hej Jennifer,%0D%0A%0D%0AJeg er interesseret i at høre mere om hvad du tilbyder. Kan vi aftale en tid til en uforpligtende samtale?%0D%0A%0D%0AMvh,%0D%0A[Dit Navn]"
+          [href]="content().mailto"
           class="btn"
         >
-          Tryk for uforpligtende samtale
+          {{ content().buttonLabel }}
         </a>
 
         <div class="contact-meta">
-          <span>Email</span>
+          <span>{{ content().emailLabel }}</span>
           <strong>Fitnessbyjennifer25&#64;gmail.com</strong>
         </div>
       </div>

@@ -2,17 +2,12 @@
   <div class="section-shell">
     <div class="about-header">
       <div appRevealOnScroll>
-        <span class="eyebrow">Om Jennifer</span>
-        <h2 class="heading">En coach, der ser <span>hele dig</span></h2>
-        <p class="about-guide">
-          Klik på et billede for at læse mere.
-        </p>
+        <span class="eyebrow">{{ content().eyebrow }}</span>
+        <h2 class="heading" [innerHTML]="content().title"></h2>
       </div>
 
       <p class="section-copy" appRevealOnScroll [revealDelay]="120">
-        Et godt forløb bygger på tillid, tydelig retning og realistiske
-        rammer. Derfor starter vi med at forstå din situation, dine mål og
-        hvad der skal til for, at du kan lykkes over tid.
+        {{ content().intro }}
       </p>
     </div>
 
@@ -21,8 +16,8 @@
         <button
           class="card"
           type="button"
-          *ngFor="let card of cardData; let i = index; trackBy: trackCard"
-          [class.active]="selectedCard === card"
+          *ngFor="let card of cardData(); let i = index; trackBy: trackCard"
+          [class.active]="selectedCardIndex === i"
           (click)="selectCard(i)"
           appRevealOnScroll
           revealVariant="scale"
@@ -30,14 +25,13 @@
         >
           <div class="card-image">
             <img [src]="card.image" [alt]="card.cardTitle" />
-            <span class="card-state" *ngIf="selectedCard === card">Aktiv</span>
+            <span class="card-state" [class.card-state-inactive]="selectedCardIndex !== i">
+              {{ selectedCardIndex === i ? content().active : content().readMore }}
+            </span>
           </div>
 
           <div class="card-copy">
             <h3>{{ card.cardTitle }}</h3>
-            <span class="card-hint" *ngIf="!isBelow1400px">
-              {{ selectedCard === card ? '' : 'Klik for at læse mere' }}
-            </span>
             <p *ngIf="isBelow1400px">{{ card.cardText }}</p>
           </div>
         </button>
@@ -51,17 +45,15 @@
         [revealDelay]="160"
       >
         <div class="about-information-header">
-          <h3>{{ selectedCard.cardTitle }}</h3>
+          <h3>{{ selectedCard().cardTitle }}</h3>
         </div>
 
         <p [class.fade-in]="fadeInClass" class="fade-text">
-          {{ selectedCard.cardText }}
+          {{ selectedCard().cardText }}
         </p>
 
         <ul class="highlights">
-          <li>Gratis indledende samtale med fokus på din hverdag og dine behov</li>
-          <li>Et tydeligt næste skridt, så du altid ved hvad du arbejder hen imod</li>
-          <li>Et forløb der er realistisk, menneskeligt og målbart</li>
+          <li *ngFor="let highlight of content().highlights">{{ highlight }}</li>
         </ul>
       </div>
     </div>

@@ -2,50 +2,42 @@
   <div class="section-shell">
     <div class="explainer">
       <div class="services-img card-surface" appRevealOnScroll revealVariant="left">
-        <img src="/about-image.jpg" alt="Jennifer i træningsmiljø" />
+        <img src="/about-image.jpg" [alt]="content().imageAlt" />
       </div>
 
       <div class="services-content" appRevealOnScroll revealVariant="right" [revealDelay]="120">
-        <span class="eyebrow">Hvorfor vælge mig</span>
-        <h2 class="heading">Faglighed, struktur og et <span>forløb med retning</span></h2>
-        <p class="section-copy">
-          Jeg arbejder med et klart fokus på dine mål, din krop og din
-          hverdag. Derfor starter vi med en indledende samtale, hvor vi afklarer
-          forventninger, udfordringer og den type støtte, der giver mest værdi
-          for dig.
-        </p>
+        <span class="eyebrow">{{ content().whyEyebrow }}</span>
+        <h2 class="heading" [innerHTML]="content().whyTitle"></h2>
+        <p class="section-copy">{{ content().whyIntro }}</p>
 
         <div class="service-points">
           <div class="point card-surface" appRevealOnScroll revealVariant="scale" [revealDelay]="220">
-            <strong>Individuel plan</strong>
-            <span>Træning og vejledning tilpasset dit niveau og din rytme.</span>
+            <strong>{{ content().points[0].title }}</strong>
+            <span>{{ content().points[0].text }}</span>
           </div>
           <div class="point card-surface" appRevealOnScroll revealVariant="scale" [revealDelay]="320">
-            <strong>Tæt sparring</strong>
-            <span>Løbende justeringer, feedback og fokus på progression.</span>
+            <strong>{{ content().points[1].title }}</strong>
+            <span>{{ content().points[1].text }}</span>
           </div>
         </div>
 
-        <a href="#contact" class="btn">Book en uforpligtende samtale</a>
+        <a href="#contact" class="btn">{{ content().cta }}</a>
       </div>
     </div>
 
     <div class="plans card-surface" appRevealOnScroll [revealDelay]="100">
       <div class="plans-header">
         <div>
-          <span class="eyebrow">Ydelser</span>
-          <h2 class="heading">Vælg det <span>forløb</span> der passer dig</h2>
+          <span class="eyebrow">{{ content().plansEyebrow }}</span>
+          <h2 class="heading" [innerHTML]="content().plansTitle"></h2>
         </div>
-        <p class="section-copy">
-          Hvert forløb er bygget op omkring tydelig retning, realistiske
-          delmål og en oplevelse af, at du ved hvad du skal gøre næste gang.
-        </p>
+        <p class="section-copy">{{ content().plansIntro }}</p>
       </div>
 
       <div class="plans-content">
         <article
           class="plan-card"
-          *ngFor="let plan of plansData; let i = index; trackBy: trackPlan"
+          *ngFor="let plan of plansData(); let i = index; trackBy: trackPlan"
           [class.expanded]="true"
           appRevealOnScroll
           revealVariant="scale"

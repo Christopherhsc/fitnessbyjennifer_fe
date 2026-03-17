@@ -1,22 +1,34 @@
 <nav class="sidebar">
+  <div class="sidebar-head">
+    <span class="sidebar-kicker">Fitness by Jennifer</span>
+    <h2>{{ content().title }}</h2>
+    <p>{{ content().subtitle }}</p>
+  </div>
+
   <ul>
-    <li 
-      (click)="setTab('profile')" 
-      [class.active]="activeTab === 'profile'">
-      Profile
+    <li>
+      <button type="button" (click)="setTab('profile')" [class.active]="activeTab === 'profile'">
+        <span class="nav-index">01</span>
+        <span>{{ content().profile }}</span>
+      </button>
     </li>
 
-    <li 
-      *ngIf="showScans"
-      (click)="setTab('scannings')" 
-      [class.active]="activeTab === 'scannings'">
-      Scanninger
+    <li *ngIf="showScans">
+      <button
+        type="button"
+        (click)="setTab('scannings')"
+        [class.active]="activeTab === 'scannings'"
+      >
+        <span class="nav-index">02</span>
+        <span>{{ content().scannings }}</span>
+      </button>
     </li>
 
-    <li 
-      (click)="setTab('booking')" 
-      [class.active]="activeTab === 'booking'">
-      Booking
+    <li>
+      <button type="button" (click)="setTab('booking')" [class.active]="activeTab === 'booking'">
+        <span class="nav-index">03</span>
+        <span>{{ content().booking }}</span>
+      </button>
     </li>
   </ul>
 </nav>

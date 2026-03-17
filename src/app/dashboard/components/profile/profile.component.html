@@ -1,58 +1,79 @@
-<div id="profile" class="profile">
-  <div class="profile-container">
-    <h2>
-      Velkommen, <span>{{ firstName || "Guest" }}!</span>
-    </h2>
-    <img
-      *ngIf="profileImage"
-      [src]="profileImage"
-      onerror="this.onerror=null;this.src='/default_profile_image.jpg'"
-      alt="Profile Picture"
-      class="profile-img"
-    />
-    <p>{{ email }}</p>
-  </div>
+<section class="profile-shell">
+  <header class="profile-hero">
+    <div class="profile-card">
+      <span class="eyebrow">{{ content().eyebrow }}</span>
+      <h1>{{ content().title }}</h1>
 
-  <div class="profile-information">
-    <p>
-      Velkommen til <span>dashboardet,</span> <br> Her kan du foretage bookinger og få adgang til
-      dine scanninger. Dine data vedrørende scanninger og bookinger deles
-      udelukkende med dig og Jennifer.
-    </p>
-  </div>
+      <div class="profile-identity">
+        <img
+          *ngIf="profileImage"
+          [src]="profileImage"
+          onerror="this.onerror=null;this.src='/default_profile_image.jpg'"
+          alt="Profile picture"
+          class="profile-img"
+        />
 
-  <!-- Profile Settings Grid -->
-  <div class="profile-settings">
-    <!-- Hide Scans -->
-    <div class="setting">
-      <label class="switch">
-        <input type="checkbox" [(ngModel)]="showScans" (ngModelChange)="profileSettings()" />
-        <span class="slider round"></span>
-      </label>
-      <span>Mine scanninger må vises på hjemmesiden</span>
+        <div class="profile-meta">
+          <h2>{{ content().introTitle }}, {{ firstName || content().guest }}</h2>
+          <p>{{ email }}</p>
+        </div>
+      </div>
     </div>
-  
-    <!-- Booking Reminders -->
-    <div class="setting">
-      <label class="switch">
-        <input type="checkbox" [(ngModel)]="bookingReminders" (ngModelChange)="profileSettings()" />
-        <span class="slider round"></span>
-      </label>
-      <span>Modtag bookingpåmindelser</span>
-  
-      <!-- Phone Number Input (Shows when bookingReminders is true) -->
-      <input 
-        *ngIf="bookingReminders" 
-        type="tel" 
-        placeholder="Indtast dit telefonnummer (8 cifre)"
-        [(ngModel)]="phoneNumber"
-        (input)="validatePhoneNumber()"
-        class="phone-input"
-        maxlength="8"
-        pattern="[0-9]{8}"
-      />
-      <p *ngIf="phoneError" class="error-text">{{ phoneError }}</p>
+
+    <div class="profile-note">
+      <h3>{{ content().privacyTitle }}</h3>
+      <p>{{ content().privacyText }}</p>
     </div>
-  </div>
-  
-</div>
+  </header>
+  <section class="settings-grid">
+    <article class="setting-card">
+      <label class="toggle-card">
+        <div class="toggle-copy">
+          <span>{{ content().visibilityLabel }}</span>
+        </div>
+
+        <span class="switch">
+          <input type="checkbox" [(ngModel)]="showScans" (ngModelChange)="profileSettings()" />
+          <span class="slider"></span>
+        </span>
+      </label>
+    </article>
+
+    <article class="setting-card">
+      <div class="setting-copy">
+        <h3>{{ content().remindersTitle }}</h3>
+        <p>{{ content().remindersText }}</p>
+      </div>
+
+      <label class="toggle-card">
+        <div class="toggle-copy">
+          <span>{{ content().remindersLabel }}</span>
+        </div>
+
+        <span class="switch">
+          <input
+            type="checkbox"
+            [(ngModel)]="bookingReminders"
+            (ngModelChange)="profileSettings()"
+          />
+          <span class="slider"></span>
+        </span>
+      </label>
+
+      <div *ngIf="bookingReminders" class="phone-panel">
+        <label for="phone">{{ content().phoneLabel }}</label>
+        <input
+          id="phone"
+          type="tel"
+          [placeholder]="content().phonePlaceholder"
+          [(ngModel)]="phoneNumber"
+          (input)="validatePhoneNumber()"
+          maxlength="8"
+          inputmode="numeric"
+        />
+        <p class="phone-help">{{ content().phoneHelp }}</p>
+        <p *ngIf="phoneError" class="error-text">{{ phoneError }}</p>
+      </div>
+    </article>
+  </section>
+</section>

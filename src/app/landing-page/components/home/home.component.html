@@ -1,35 +1,17 @@
 <section class="home" id="home">
   <div class="section-shell home-shell">
     <div class="home-content" appRevealOnScroll revealVariant="left">
-      <span class="eyebrow">Personlig Træning i København</span>
-      <h1>Byg en stærkere krop med et forløb, der passer til dit liv.</h1>
-      <p class="lead">
-        Målrettet træning, personlig sparring og et trygt samarbejde, der
-        giver plads til både ambitioner, hverdag og varige resultater.
-      </p>
+      <span class="eyebrow">{{ content().eyebrow }}</span>
+      <h1>{{ content().title }}</h1>
+      <p class="lead">{{ content().lead }}</p>
 
       <div class="typewriter" appRevealOnScroll [revealDelay]="120">
-        <span>Styrke. Balance. Resultater.</span>
+        <span>{{ content().typewriter }}</span>
       </div>
 
       <div class="home-actions">
-        <a href="#contact" class="btn">Book en uforpligtende samtale</a>
-        <a href="#services" class="btn btn-secondary">Se mine ydelser</a>
-      </div>
-
-      <div class="home-metrics">
-        <div class="metric card-surface" appRevealOnScroll [revealDelay]="120">
-          <strong>1:1</strong>
-          <span>Personligt tilpasset forløb fra start</span>
-        </div>
-        <div class="metric card-surface" appRevealOnScroll [revealDelay]="220">
-          <strong>Holistisk</strong>
-          <span>Træning, kost og vaner i samme plan</span>
-        </div>
-        <div class="metric card-surface" appRevealOnScroll [revealDelay]="320">
-          <strong>KBH</strong>
-          <span>Fysiske forløb med base i København</span>
-        </div>
+        <a href="#contact" class="btn">{{ content().primaryCta }}</a>
+        <a href="#services" class="btn btn-secondary">{{ content().secondaryCta }}</a>
       </div>
     </div>
 
@@ -37,12 +19,12 @@
       <div class="visual-orb orb-one"></div>
       <div class="visual-orb orb-two"></div>
       <div class="image-frame card-surface">
-        <img src="/landingpage-image.png" alt="Jennifer under træning" />
+        <img src="/landingpage-image.png" [alt]="content().imageAlt" />
       </div>
 
       <div class="floating-note card-surface" appRevealOnScroll revealVariant="scale" [revealDelay]="280">
-        <span>Forløb med retning</span>
-        <strong>Stærkere fysik. Mere energi. Mere ro i processen.</strong>
+        <span>{{ content().noteLabel }}</span>
+        <strong>{{ content().noteTitle }}</strong>
       </div>
     </div>
   </div>

@@ -8,7 +8,7 @@
     <button
       type="button"
       class="menu-toggle"
-      aria-label="Åbn menu"
+      [attr.aria-label]="content().openMenuLabel"
       (click)="toggleMenu()"
     >
       <i class="bx" [ngClass]="isMenuOpen ? 'bx-x' : 'bx-menu'"></i>
@@ -17,7 +17,7 @@
     <nav class="navbar" [ngClass]="{ active: isMenuOpen }">
       <ul class="nav-links">
         <ng-container *ngIf="!isLoggedIn">
-          <li *ngFor="let link of navLinks; let i = index; trackBy: trackLink">
+          <li *ngFor="let link of navLinks(); let i = index; trackBy: trackLink">
             <a
               [ngClass]="{ active: activeLink === link.id }"
               (click)="setActive(link.id)"
@@ -26,23 +26,35 @@
             </a>
           </li>
         </ng-container>
+
+        <li *ngIf="isLoggedIn">
+          <a
+            [class.active]="isDashboardRoute()"
+            (click)="navigateLoggedIn()"
+          >
+            {{ isDashboardRoute() ? content().page : content().dashboard }}
+          </a>
+        </li>
       </ul>
 
       <div class="nav-actions">
-        <a
-          *ngIf="isLoggedIn"
-          class="ghost-link"
-          [routerLink]="['/dashboard']"
-          (click)="isMenuOpen = false"
+        <button
+          type="button"
+          class="language-toggle"
+          [attr.aria-label]="content().toggleLabel"
+          [attr.title]="content().toggleLabel"
+          (click)="toggleLanguage()"
         >
-          Dashboard
-        </a>
+          <span class="flag" [class.active]="currentLanguage() === 'da'">🇩🇰</span>
+          <span class="language-thumb" [class.english]="currentLanguage() === 'en'"></span>
+          <span class="flag" [class.active]="currentLanguage() === 'en'">🇬🇧</span>
+        </button>
 
         <button *ngIf="!isLoggedIn" type="button" class="btn" (click)="loginWithGoogle()">
-          Log ind
+          {{ showComingSoon ? content().comingSoon : content().login }}
         </button>
         <button *ngIf="isLoggedIn" type="button" class="btn btn-secondary" (click)="logout()">
-          Log ud
+          {{ content().logout }}
         </button>
       </div>
     </nav>

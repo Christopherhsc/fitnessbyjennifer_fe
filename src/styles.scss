@@ -76,7 +76,7 @@ img {
   max-width: 100%;
 }
 
-section {
+.landing-page section {
   position: relative;
   width: 100%;
   padding: 7rem 0;
@@ -238,7 +238,7 @@ section {
 }
 
 @media (max-width: 900px) {
-  section {
+  .landing-page section {
     padding: 5.5rem 0;
   }
 

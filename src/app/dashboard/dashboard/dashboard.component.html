@@ -1,8 +1,40 @@
 <section id="dashboard" class="dashboard">
   <div class="dashboard-container">
-    <app-sidebar [showScans]="showScans" (tabChange)="setActiveTab($event)"></app-sidebar>
+    <div class="dashboard-tabs">
+      <button
+        type="button"
+        class="dashboard-tab"
+        [class.active]="activeTab === 'profile'"
+        (click)="setActiveTab('profile')"
+      >
+        {{ content().profile }}
+      </button>
+
+      <button
+        *ngIf="showScans"
+        type="button"
+        class="dashboard-tab"
+        [class.active]="activeTab === 'scannings'"
+        (click)="setActiveTab('scannings')"
+      >
+        {{ content().scannings }}
+      </button>
+
+      <button
+        type="button"
+        class="dashboard-tab"
+        [class.active]="activeTab === 'booking'"
+        (click)="setActiveTab('booking')"
+      >
+        {{ content().booking }}
+      </button>
+    </div>
+
     <div class="dashboard-content">
-      <app-profile *ngIf="activeTab === 'profile'" (scansVisibilityChange)="updateScansVisibility($event)"></app-profile>
+      <app-profile
+        *ngIf="activeTab === 'profile'"
+        (scansVisibilityChange)="updateScansVisibility($event)"
+      ></app-profile>
       <app-booking *ngIf="activeTab === 'booking'"></app-booking>
       <app-scannings *ngIf="activeTab === 'scannings' && showScans"></app-scannings>
     </div>

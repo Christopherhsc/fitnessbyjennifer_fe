@@ -2,21 +2,17 @@
   <div class="section-shell">
     <div class="review-header">
       <div appRevealOnScroll>
-        <span class="eyebrow">Anmeldelser</span>
-        <h2 class="heading">Klienter beskriver et samarbejde med <span>ro og resultater</span></h2>
+        <span class="eyebrow">{{ content().eyebrow }}</span>
+        <h2 class="heading" [innerHTML]="content().title"></h2>
       </div>
 
-      <p class="section-copy" appRevealOnScroll [revealDelay]="120">
-        Det vigtigste for mig er, at du føler dig tryg, forstået og godt
-        guidet. Her er et lille indblik i, hvordan forløbet opleves fra den
-        anden side.
-      </p>
+      <p class="section-copy" appRevealOnScroll [revealDelay]="120">{{ content().intro }}</p>
     </div>
 
     <div class="wrapper">
       <article
         class="review-item"
-        *ngFor="let review of reviews; let i = index"
+        *ngFor="let review of reviews(); let i = index"
         appRevealOnScroll
         revealVariant="scale"
         [revealDelay]="120 + i * 120"

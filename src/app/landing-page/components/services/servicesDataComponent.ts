@@ -1,4 +1,13 @@
-export const plansInformation = [
+import { Language } from '../../../shared/services/language.service';
+
+export interface ServicePlan {
+  planTitle: string;
+  planText: string;
+  dotPoints: string[];
+}
+
+export const plansInformation: Record<Language, ServicePlan[]> = {
+  da: [
     {
       planTitle: 'Personlig Træning',
       planText:
@@ -32,5 +41,41 @@ export const plansInformation = [
         'Samtaler efter forløbet ved behov.',
       ],
     },
-  ];
+  ],
+  en: [
+    {
+      planTitle: 'Personal Training',
+      planText:
+        'Personal training is the right choice if you want to challenge yourself, understand your body better, and achieve results you may not have reached before. I believe good chemistry and a strong collaboration are essential. That is why I always start with an informal, no-obligation conversation where we talk through your expectations and define your goals together. A process with me is tailored to your everyday patterns so it stays realistic and motivating.',
+      dotPoints: [
+        'Development of a personal training plan.',
+        'Focus on collaboration and motivation.',
+        'Tailored goals.',
+        'Flexible and realistic coaching plans.',
+      ],
+    },
+    {
+      planTitle: 'Online Personal Training',
+      planText:
+        'I also offer online personal training. This process is essentially the same as an in-person one, just without the physical training sessions. Training programming, nutrition guidance, check-ins, and 1:1 support are the same as in a physical course with me. In this format, there is naturally more communication by phone because we do not meet in person every week. Online coaching places a strong focus on going deeper into your nutrition, training, and lifestyle.',
+      dotPoints: [
+        'Online coaching without physical sessions.',
+        'Programming, nutrition guidance, and check-ins.',
+        'Phone-based communication and support.',
+        'Strong focus on nutrition and lifestyle in depth.',
+      ],
+    },
+    {
+      planTitle: 'Nutrition Guidance',
+      planText:
+        'As a nutrition coach, I am passionate about helping people achieve a lasting lifestyle change and feel better in their bodies. It is often difficult to change your lifestyle on your own, so I help with practical tools, useful knowledge, and support throughout your process, as well as follow-up conversations afterward if extra support is needed.',
+      dotPoints: [
+        'Personal advice on nutrition and lifestyle.',
+        'Tools and support for lasting change.',
+        'Guidance and follow-up throughout the process.',
+        'Post-program conversations when needed.',
+      ],
+    },
+  ],
+};
   

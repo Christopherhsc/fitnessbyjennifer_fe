@@ -1,67 +1,120 @@
-<div class="scannings-container">
-  <div class="form-and-list">
-    <!-- Form Section -->
-    <form (submit)="addData($event)" class="form-section">
-      <h3>Tilføj data</h3>
+<section class="scannings-shell">
+  <header class="scannings-hero">
+    <div class="hero-copy">
+      <span class="eyebrow">{{ content().eyebrow }}</span>
+      <h1>{{ content().title }}</h1>
+      <p>{{ content().intro }}</p>
+    </div>
+  </header>
 
-      <!-- Value Inputs in a Row -->
+  <div class="scannings-grid">
+    <form (submit)="addData($event)" class="form-panel">
+      <div class="panel-head">
+        <h2>{{ content().addData }}</h2>
+      </div>
+
       <div class="value-inputs">
-        <div>
-          <label for="date">Dato:</label>
-          <input
-            type="date"
-            id="date"
-            name="date"
-            [(ngModel)]="newDate"
-            required
-          />
+        <div class="input-group">
+          <label for="date">{{ content().date }}</label>
+          <div class="input-shell input-shell-date">
+            <input type="date" id="date" name="date" [(ngModel)]="newDate" required />
+          </div>
         </div>
 
-        <div>
-          <label for="weight">Vægt:</label>
-          <input type="number" id="weight" name="weight" [(ngModel)]="weight" />
+        <div class="input-group">
+          <label for="weight">{{ content().weight }}</label>
+          <div class="input-shell">
+            <input
+              type="number"
+              id="weight"
+              name="weight"
+              [(ngModel)]="weight"
+              min="0"
+              step="0.1"
+              placeholder="0.0"
+            />
+            <span class="input-unit">{{ content().weightUnit }}</span>
+          </div>
         </div>
 
-        <div>
-          <label for="value2">Fedt procent:</label>
-          <input type="number" id="value2" name="value2" [(ngModel)]="value2" />
+        <div class="input-group">
+          <label for="value2">{{ content().fat }}</label>
+          <div class="input-shell">
+            <input
+              type="number"
+              id="value2"
+              name="value2"
+              [(ngModel)]="value2"
+              min="0"
+              max="100"
+              step="0.1"
+              placeholder="0.0"
+            />
+            <span class="input-unit">{{ content().percentUnit }}</span>
+          </div>
         </div>
 
-        <div>
-          <label for="value3">Muskelmasse:</label>
-          <input type="number" id="value3" name="value3" [(ngModel)]="value3" />
+        <div class="input-group">
+          <label for="value3">{{ content().muscle }}</label>
+          <div class="input-shell">
+            <input
+              type="number"
+              id="value3"
+              name="value3"
+              [(ngModel)]="value3"
+              min="0"
+              step="0.1"
+              placeholder="0.0"
+            />
+            <span class="input-unit">{{ content().weightUnit }}</span>
+          </div>
         </div>
       </div>
 
-      <button type="submit">Tilføj</button>
+      <button type="submit">{{ content().addButton }}</button>
     </form>
 
-    <!-- Data List Section -->
-    <div class="data-list" [class.overflow]="data.length > 5">
-      <h3>Dine Data</h3>
-      <ul>
-        <!-- Headers for sorting -->
-        <li class="header">
-          <span (click)="sortData('date')">Dato</span>
-          <span (click)="sortData('vægt')">Vægt</span>
-          <span (click)="sortData('fedt')">Fedt %</span>
-          <span (click)="sortData('muskelmasse')">Muskelmasse</span>
-        </li>
+    <section class="data-panel">
+      <div class="panel-head">
+        <h2>{{ content().yourData }}</h2>
+      </div>
 
-        <!-- Data Rows -->
-        <li *ngFor="let item of data; let i = index">
+      <div *ngIf="data.length === 0" class="empty-state">
+        <p>{{ content().emptyList }}</p>
+      </div>
+
+      <div *ngIf="data.length > 0" class="data-table">
+        <div class="data-row data-row-header">
+          <button type="button" (click)="sortData('date')">{{ content().date }}</button>
+          <button type="button" (click)="sortData('weight')">{{ content().weight }}</button>
+          <button type="button" (click)="sortData('fat')">{{ content().fat }}</button>
+          <button type="button" (click)="sortData('muscle')">{{ content().muscle }}</button>
+          <span></span>
+        </div>
+
+        <div class="data-row" *ngFor="let item of data; let i = index">
           <span>{{ item.date }}</span>
-          <span>{{ item.weight ?? "-" }}</span>
-          <span>{{ item.fatPercentage ?? "-" }}</span>
-          <span>{{ item.muscleMass ?? "-" }}</span>
-          <button (click)="deleteData(i)">Slet</button>
-        </li>
-      </ul>
-    </div>
+          <span>{{ formatMetric(item.weight, content().weightUnit) }}</span>
+          <span>{{ formatMetric(item.fatPercentage, content().percentUnit) }}</span>
+          <span>{{ formatMetric(item.muscleMass, content().weightUnit) }}</span>
+          <button type="button" class="delete-button" (click)="deleteData(i)">
+            {{ content().delete }}
+          </button>
+        </div>
+      </div>
+    </section>
   </div>
 
-  <!-- Chart -->
-  <div class="canvas-container">
-    <canvas #chartCanvas></canvas>
-  </div>
-</div>
+  <section class="chart-panel">
+    <div class="panel-head">
+      <div>
+        <h2>{{ content().chartTitle }}</h2>
+        <p>{{ content().chartEmpty }}</p>
+      </div>
+    </div>
+
+    <div class="chart-frame">
+      <canvas #chartCanvas></canvas>
+    </div>
+  </section>
+</section>

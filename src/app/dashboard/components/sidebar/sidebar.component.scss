@@ -1,42 +1,125 @@
 .sidebar {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  width: 100%;
+  display: grid;
+  gap: 1.5rem;
+  padding: 1.4rem;
+  border: 1px solid rgba(214, 122, 76, 0.2);
+  border-radius: 2rem;
+  background:
+    linear-gradient(180deg, rgba(255, 252, 249, 0.92), rgba(251, 243, 236, 0.92));
+  box-shadow: 0 24px 70px rgba(115, 75, 55, 0.08);
 }
 
-ul {
-  list-style: none;
+.sidebar-head {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.sidebar-kicker {
+  color: var(--main-color);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.16rem;
+  text-transform: uppercase;
+}
+
+.sidebar-head h2 {
+  margin: 0;
+  font-size: clamp(1.4rem, 2vw, 1.8rem);
+  line-height: 1.05;
+}
+
+.sidebar-head p {
+  margin: 0;
+  color: var(--muted-text);
+  line-height: 1.6;
+}
+
+.sidebar ul {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0;
   padding: 0;
+  list-style: none;
 }
 
-li {
-  margin: 0.8rem 0;
-  cursor: pointer;
-  padding: 0.8rem;
-  color: white;
-  width: 100%;
-  position: relative; /* Needed for the arrow */
+.sidebar li {
+  margin: 0;
+}
 
-  &:hover {
-    background-color: var(--np-color);
-    border-radius: 1rem;
+.sidebar button {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  width: 100%;
+  padding: 0.95rem 1rem;
+  border: 1px solid rgba(214, 122, 76, 0.14);
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.7);
+  color: var(--text-color);
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+  text-align: left;
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.sidebar button:hover {
+  transform: translateY(-1px);
+  border-color: rgba(214, 122, 76, 0.28);
+  box-shadow: 0 14px 28px rgba(214, 122, 76, 0.12);
+}
+
+.sidebar button.active {
+  border-color: rgba(214, 122, 76, 0.38);
+  background: linear-gradient(135deg, rgba(214, 122, 76, 0.2), rgba(214, 122, 76, 0.08));
+  box-shadow: 0 14px 30px rgba(214, 122, 76, 0.16);
+}
+
+.nav-index {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.2rem;
+  min-height: 2.2rem;
+  border-radius: 999px;
+  background: rgba(214, 122, 76, 0.12);
+  color: var(--main-color);
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
+@media (max-width: 960px) {
+  .sidebar {
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 1.5rem;
+  }
+
+  .sidebar ul {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .sidebar button {
+    justify-content: center;
+    text-align: center;
   }
 }
 
-li.active {
-  font-weight: bold;
-  background-color: var(--main-color);
-  border-radius: 1rem;
-}
+@media (max-width: 640px) {
+  .sidebar {
+    padding: 0.85rem;
+    border-radius: 1.25rem;
+  }
 
-/* 🔹 Add Arrow When Active */
-li.active::before {
-  content: "▶"; /* Arrow symbol */
-  position: absolute;
-  left: -1rem;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--main-color);
-  font-size: 1rem;
+  .sidebar-head p {
+    font-size: 0.95rem;
+  }
+
+  .sidebar ul {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar button {
+    justify-content: flex-start;
+  }
 }
